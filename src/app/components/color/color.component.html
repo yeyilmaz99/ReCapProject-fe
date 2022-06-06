@@ -1,6 +1,5 @@
 <h4>Colors</h4>
-<ul>
-    <li *ngFor="let color of colors">
-        {{color.colorName}}
-    </li>
+
+<ul class="list-group" *ngFor="let color of colors">
+  <li class="list-group-item">{{ color.colorName }}</li>
 </ul>
