@@ -1,6 +1,21 @@
-<h4>Cars</h4>
-<ul>
-    <li *ngFor="let car of cars">
-        <td> {{car.carName}} </td>
-    </li>
-</ul>
+<h2>Cars</h2>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">CarName</th>
+        <th scope="col">BrandName</th>
+        <th scope="col">ColorName</th>
+        <th scope="col">DailyPrice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars">
+        <td>{{car.carId}}</td>
+        <td>{{car.carName}}</td>
+        <td>{{car.brandName}}</td>
+        <td>{{car.colorName}}</td>
+        <td>{{car.dailyPrice}}</td>
+      </tr>
+    </tbody>
+  </table>
