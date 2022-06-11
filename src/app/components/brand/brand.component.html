@@ -1,4 +1,4 @@
 <h4>Brands</h4>
 <ul class="list-group" *ngFor="let brand of brands">
-    <li class="list-group-item">{{brand.brandName}}</li>
+    <li routerLink="/cars/brand/{{brand.brandId}}" class="list-group-item">{{brand.brandName}}</li>
 </ul>
