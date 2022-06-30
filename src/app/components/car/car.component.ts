@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/models/car';
 import { ActivatedRoute } from '@angular/router';
 import { CarService } from 'src/app/services/carService/car.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-car',
@@ -10,6 +11,10 @@ import { CarService } from 'src/app/services/carService/car.service';
 })
 export class CarComponent implements OnInit {
   cars: Car[] = [];
+  length: number = this.cars.length;
+  carsSlice: Car[];
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
   dataLoaded: boolean = false;
   constructor(
     private carService: CarService,
@@ -46,5 +51,13 @@ export class CarComponent implements OnInit {
       this.cars = response.data;
       this.dataLoaded = true;
     });
+  }
+  OnPageChange(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if (endIndex > this.cars.length) {
+      endIndex = this.cars.length;
+    }
+    this.carsSlice = this.cars.slice(startIndex, endIndex);
   }
 }
