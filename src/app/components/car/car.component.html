@@ -1,4 +1,4 @@
-<h2>Cars</h2>
+<!-- <h2>Cars</h2>
 <table class="table">
   <thead>
     <tr>
@@ -18,6 +18,92 @@
       <td>{{ car.dailyPrice }}</td>
     </tr>
   </tbody>
-</table>
+</table> -->
+
+
+
+<!-- Page Content -->
+<!-- Items Starts Here -->
+<div class="featured-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <div class="section-heading">
+          <div class="line-dec"></div>
+          <h1>Featured Items</h1>
+        </div>
+
+      </div>
+      <div class="row">
+
+        <div class="col-md-3">
+          <h2>Select Color</h2>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <h2>Select Brand</h2>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <h2 style="color: white;">Filtre</h2>
+        <button type="button" class="btn btn-primary">Filtrele</button>
+        </div>
+      </div>
+      <div class="col-md-8 col-sm-12">
+        <div id="filters" class="button-group">
+          <!-- <button class="btn btn-primary" (click)="sortAll()" data-filter="*">All Products</button> -->
+          <!-- <button class="btn btn-primary" data-filter=".new">Newest</button> -->
+          <!-- <button class="btn btn-primary" (click)="sortLow()" data-filter=".low">Low Price</button>
+          <button class="btn btn-primary" (click)="sortHigh()" data-filter=".high">Hight Price</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div *ngFor="let car of cars"  class="col">
+      <div class="card">
+          <!-- <img routerLink='/detail/{{product.id}}' src="{{product.photos[0].path}}" class="card-img-top" alt="..."> -->
+          <img routerLink="/cars/car/{{car.carId}}" src="assets/images/product6.jpg" class="card-img-top" alt="...">
+          <div routerLink="/cars/car/{{car.carId}}" class="card-body">
+            <h5 class="card-title text-truncate">{{car.carName}}</h5>
+            <p class="card-text text-truncate">{{car.brandName}}</p>
+          </div>
+          <div class="card-footer">
+            <strong class="price">{{car.dailyPrice}}₺ </strong>
+            <button style="background-color: #5c86cb; float: right; color: white;" class="btn btnAddToCart">Add To Cart</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <mat-paginator [length]="length" [pageSize]="12" aria-label="Select page" (page)="OnPageChange($event)">
+  </mat-paginator>
+
+
+
+</div>
+
+<!-- Featred Page Ends Here -->
+
+
+<!-- Subscribe Form Starts Here -->
+<subscribe-form></subscribe-form>
+<!-- Subscribe Form Ends Here -->
+
+
+
+
+
 
 
