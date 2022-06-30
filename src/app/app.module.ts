@@ -11,6 +11,10 @@ import { RentalComponent } from './components/rental/rental.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerComponent } from './components/customer/customer.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
+import { HomeComponent } from './components/home/home.component';
+import { SubscribeFormComponent } from './components/subscribe-form/subscribe-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -23,11 +27,15 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
     RentalComponent,
     CustomerComponent,
     CarDetailComponent,
+    HomeComponent,
+    SubscribeFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
