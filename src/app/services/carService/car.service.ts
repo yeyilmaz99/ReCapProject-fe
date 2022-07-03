@@ -6,12 +6,14 @@ import { Car } from 'src/app/models/car';
 import { ResponseModel } from 'src/app/models/responseModel';
 import { SignleResponseModel } from 'src/app/models/singleResponseModel';
 import { CarImage } from 'src/app/models/carImage';
+import { FilterModel } from 'src/app/models/filterModel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarService {
   apiUrl = 'https://localhost:44345/api/';
+  type = {colorId:1,brandId:1}
 
   constructor(private httpClient: HttpClient) {}
 
@@ -35,5 +37,8 @@ export class CarService {
   getCarImagesByCarId(carId: number): Observable<ListResponseModel<CarImage>> {
     let newPath = this.apiUrl + 'CarImages/getall?carId=' + carId;
     return this.httpClient.get<ListResponseModel<CarImage>>(newPath);
+  }
+  getCarsByBrandAndColorId(colorId:number,brandId:number):Observable<ListResponseModel<Car>>{
+    return this.httpClient.get<ListResponseModel<Car>>(this.apiUrl+"Cars/getbybrandidandcolorid?colorId="+colorId+"&brandId="+brandId);
   }
 }
