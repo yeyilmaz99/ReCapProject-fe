@@ -31,31 +31,6 @@
           <h1>Featured Items</h1>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-3">
-          <h2>Select Brand</h2>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Please Select Brand</option>
-            <option
-              *ngFor="let brand of brands; let i = index"
-              value="{{ brand.brandId }}"
-            >
-              {{ brand.brandName }}
-            </option>
-          </select>
-        </div>
-        <div class="col-md-3">
-          <h2>Select Color</h2>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Please Select Color</option>
-            <option *ngFor="let color of colors" value="{{color.colorId}}">{{color.colorName}}</option>
-          </select>
-        </div>
-        <div class="col-md-3">
-          <h2 style="color: white">Filtre</h2>
-          <button type="button" class="btn btn-primary">Filtrele</button>
-        </div>
-      </div>
       <div class="col-md-8 col-sm-12">
         <div id="filters" class="button-group">
           <!-- <button class="btn btn-primary" (click)="sortAll()" data-filter="*">All Products</button> -->
@@ -63,6 +38,44 @@
           <!-- <button class="btn btn-primary" (click)="sortLow()" data-filter=".low">Low Price</button>
           <button class="btn btn-primary" (click)="sortHigh()" data-filter=".high">Hight Price</button> -->
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content container mb-3">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="carFilterForm">
+          <label for="brandId"><h3>Select Brand</h3></label>
+          <select
+            class="form-select"
+            id="brandId"
+            formControlName="brandId"
+            aria-label="Default select example"
+          >
+            <option *ngFor="let brand of brands" [ngValue]=brand.brandId>
+              {{ brand.brandName }}
+            </option>
+          </select>
+          <label for="colorId"><h3>Select Color</h3></label>
+          <select
+            class="form-select"
+            id="colorId"
+            formControlName="colorId"
+            aria-label="Default select example"
+          >
+            <option *ngFor="let color of colors" [ngValue]= color.colorId >
+              {{ color.colorName }}
+            </option>
+          </select>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-primary" (click)="filter()">
+          Filtrele
+        </button>
       </div>
     </div>
   </div>
