@@ -98,13 +98,12 @@ export class CarComponent implements OnInit {
   filter(){
     if(this.carFilterForm.valid){
       let filterModel:FilterModel = Object.assign({},this.carFilterForm.value);
-      console.log(filterModel.colorId,filterModel.brandId)
       this.carService.getCarsByBrandAndColorId(filterModel.colorId,filterModel.brandId).subscribe(response=>{
         this.cars = response.data
       })
 
     }else{
-      console.log("no")
+      
     }
   }
   }
