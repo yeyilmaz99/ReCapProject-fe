@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
+import { Rental } from 'src/app/models/rental';
+import { Rent } from 'src/app/models/rentModel';
 import { CarService } from 'src/app/services/carService/car.service';
+import { RentalService } from 'src/app/services/rentalService/rental.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -12,9 +16,13 @@ import { CarService } from 'src/app/services/carService/car.service';
 export class CarDetailComponent implements OnInit {
   car: Car;
   carImages: CarImage[] = [];
+  rent: Rent = { carId: 0, customerId: 0, rentDate: new Date() };
+  carId:number;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private carService: CarService
+    private carService: CarService,
+    private rentalService: RentalService,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -24,6 +32,7 @@ export class CarDetailComponent implements OnInit {
         this.getCarImagesByCarId(params['carId']);
       }
     });
+    this.deneme();
   }
 
   getCarDetailsByCarId(carId: number) {
@@ -35,7 +44,26 @@ export class CarDetailComponent implements OnInit {
   getCarImagesByCarId(carId: number) {
     this.carService.getCarImagesByCarId(carId).subscribe((response) => {
       this.carImages = response.data;
-      console.log(this.carImages[0].carId)
+    });
+  }
+
+  deneme(){
+    this.activatedRoute.params.subscribe(params => {
+      if(params['carId']){
+        this.carId = params['carId'];
+        console.log(this.carId)
+      }
+    })
+  }
+
+  rentaCar() {
+    this.rent.carId = this.carId;
+    this.rent.customerId = 1,
+    this.rent.rentDate = new Date();
+    this.rentalService.addRental(this.rent).subscribe(response => {
+      this.toastrService.success(response.message,"Başarılı");
+    },responseError => {
+      this.toastrService.error(responseError.error.message)
     });
   }
 }
