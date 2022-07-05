@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 
@@ -46,9 +48,11 @@ import { IyzipayComponent } from './components/iyzipay/iyzipay.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatNativeDateModule,
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),
