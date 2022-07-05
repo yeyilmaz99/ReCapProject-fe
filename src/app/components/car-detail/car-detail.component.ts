@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
@@ -22,17 +22,19 @@ export class CarDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private carService: CarService,
     private rentalService: RentalService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       if (params['carId']) {
+        this.carId = params['carId'];
         this.getCarDetailsByCarId(params['carId']);
         this.getCarImagesByCarId(params['carId']);
       }
     });
-    this.deneme();
+
   }
 
   getCarDetailsByCarId(carId: number) {
@@ -47,14 +49,6 @@ export class CarDetailComponent implements OnInit {
     });
   }
 
-  deneme(){
-    this.activatedRoute.params.subscribe(params => {
-      if(params['carId']){
-        this.carId = params['carId'];
-        console.log(this.carId)
-      }
-    })
-  }
 
   rentaCar() {
     this.rent.carId = this.carId;
@@ -62,6 +56,14 @@ export class CarDetailComponent implements OnInit {
     this.rent.rentDate = new Date();
     this.rentalService.addRental(this.rent).subscribe(response => {
       this.toastrService.success(response.message,"Başarılı");
+    },responseError => {
+      this.toastrService.error(responseError.error.message)
+    });
+  }
+
+  checkIfCarIsReturned(){
+    this.rentalService.checkIfCarIsReturned(this.carId).subscribe(response => {
+      this.router.navigate(["cars/car/"+this.carId+"/rental"])
     },responseError => {
       this.toastrService.error(responseError.error.message)
     });
