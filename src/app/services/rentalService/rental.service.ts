@@ -19,5 +19,8 @@ export class RentalService {
   addRental(rent:Rent):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiUrl+"add",rent);
   }
+  checkIfCarIsReturned(id:number):Observable<ResponseModel>{
+    return this.httpClient.get<ResponseModel>(this.apiUrl+"checkifcarisreturned?id="+id);
+  }
 
 }
