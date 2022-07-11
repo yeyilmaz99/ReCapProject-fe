@@ -13,6 +13,7 @@ import {
 } from '@angular/forms';
 import { Rent } from 'src/app/models/rentModel';
 import { ToastrService } from 'ngx-toastr';
+import { IyzipayComponent } from '../iyzipay/iyzipay.component';
 
 const today = new Date();
 const month = today.getMonth();
@@ -30,6 +31,8 @@ export class RentalComponent implements OnInit {
   carId: number;
   carImages: CarImage[] = [];
   returnDate = null;
+  iyziPay:boolean = false;
+  iyziPaySms:boolean = false;
 
 
   campaignOne: FormGroup;
@@ -94,4 +97,14 @@ export class RentalComponent implements OnInit {
       );
     }
   }
+  iyziPayTrue(){
+    this.iyziPay = true;
+  }
+  iyziPaySmsTrue(){
+    this.iyziPay = false;
+    this.iyziPaySms =true;
+  }
+
+
+
 }
