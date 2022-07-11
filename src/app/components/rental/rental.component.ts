@@ -6,7 +6,11 @@ import { Rental } from 'src/app/models/rental';
 import { CarService } from 'src/app/services/carService/car.service';
 import { RentalService } from 'src/app/services/rentalService/rental.service';
 import {DateAdapter} from '@angular/material/core';
+import {FormGroup, FormControl} from '@angular/forms';
 
+const today = new Date();
+const month = today.getMonth();
+const year = today.getFullYear();
 
 @Component({
   selector: 'app-rental',
@@ -18,6 +22,15 @@ export class RentalComponent implements OnInit {
   dataLoaded: boolean = false;
   car:Car;
   carImages:CarImage[] = [];
+
+  
+
+
+
+  campaignOne = new FormGroup({
+    start: new FormControl(new Date(year, month, today.getDate())),
+    end: new FormControl(),
+  });
 
   constructor(
     private activatedRoute:ActivatedRoute,
