@@ -6,7 +6,7 @@ import { Rental } from 'src/app/models/rental';
 import { CarService } from 'src/app/services/carService/car.service';
 import { RentalService } from 'src/app/services/rentalService/rental.service';
 import {DateAdapter} from '@angular/material/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormGroup, FormControl , FormBuilder ,Validators} from '@angular/forms';
 
 const today = new Date();
 const month = today.getMonth();
@@ -23,7 +23,7 @@ export class RentalComponent implements OnInit {
   car:Car;
   carImages:CarImage[] = [];
 
-  
+
 
 
 
@@ -35,7 +35,8 @@ export class RentalComponent implements OnInit {
   constructor(
     private activatedRoute:ActivatedRoute,
     private rentalService: RentalService,
-    private carService: CarService
+    private carService: CarService,
+    private formBuilder: FormBuilder
     ) {}
 
   ngOnInit(): void {
@@ -45,6 +46,7 @@ export class RentalComponent implements OnInit {
         this.getCarImagesByCarId(params['carId']);
       }
     });
+    this.datePicker();
   }
 
   getRentals() {
@@ -65,5 +67,21 @@ export class RentalComponent implements OnInit {
       this.carImages = response.data;
     });
   }
+
+  datePicker(){
+    this.campaignOne = this.formBuilder.group({
+      start:[new Date, Validators.required],
+      end:[""]
+    })
+
+  }
+
+  getDatePicker(){
+    console.log(this.campaignOne.value);
+  }
+
+
+
+
   
 }
