@@ -16,7 +16,7 @@ import { RentalService } from 'src/app/services/rentalService/rental.service';
 export class CarDetailComponent implements OnInit {
   car: Car;
   carImages: CarImage[] = [];
-  rent: Rent = { carId: 0, customerId: 0, rentDate: new Date() };
+  rent: Rent = { carId: 0, customerId: 0, rentDate: new Date(),returnDate:null };
   carId:number;
   constructor(
     private activatedRoute: ActivatedRoute,
