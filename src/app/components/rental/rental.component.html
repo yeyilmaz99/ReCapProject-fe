@@ -67,11 +67,20 @@
           </mat-form-field>
 
           <div class="card-body">
-            <button class="btn btn-success" (click)="rentACar()">Kirala</button>
+            <button class="btn btn-success" (click)="iyziPayTrue()">Kirala</button>
           </div>
 
+
+
       </div>
-      
+      <div *ngIf="iyziPay">
+        <app-iyzipay></app-iyzipay>
+      </div>
+      <div *ngIf="iyziPaySms">
+        <app-iyzi-sms></app-iyzi-sms>
+      </div>
+
+
       </div>
     </div>
   </div>
