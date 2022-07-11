@@ -5,8 +5,8 @@ import { CarImage } from 'src/app/models/carImage';
 import { Rental } from 'src/app/models/rental';
 import { CarService } from 'src/app/services/carService/car.service';
 import { RentalService } from 'src/app/services/rentalService/rental.service';
-import {DateAdapter} from '@angular/material/core';
 import {FormGroup, FormControl , FormBuilder ,Validators} from '@angular/forms';
+import { Rent } from 'src/app/models/rentModel';
 
 const today = new Date();
 const month = today.getMonth();
@@ -71,14 +71,15 @@ export class RentalComponent implements OnInit {
   datePicker(){
     this.campaignOne = this.formBuilder.group({
       start:[new Date, Validators.required],
-      end:[""]
+      end:[""],
+
     })
 
   }
 
   getDatePicker(){
     if(this.campaignOne.valid){
-      console.log(this.campaignOne.value);
+      let rentModel:Rent
     }
   }
 
