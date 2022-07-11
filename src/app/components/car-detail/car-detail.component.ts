@@ -16,7 +16,7 @@ import { RentalService } from 'src/app/services/rentalService/rental.service';
 export class CarDetailComponent implements OnInit {
   car: Car;
   carImages: CarImage[] = [];
-  rent: Rent = { carId: 0, customerId: 0, rentDate: new Date(),returnDate:null };
+
   carId:number;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -49,17 +49,6 @@ export class CarDetailComponent implements OnInit {
     });
   }
 
-
-  rentaCar() {
-    this.rent.carId = this.carId;
-    this.rent.customerId = 1,
-    this.rent.rentDate = new Date();
-    this.rentalService.addRental(this.rent).subscribe(response => {
-      this.toastrService.success(response.message,"Başarılı");
-    },responseError => {
-      this.toastrService.error(responseError.error.message)
-    });
-  }
 
   checkIfCarIsReturned(){
     this.rentalService.checkIfCarIsReturned(this.carId).subscribe(response => {
