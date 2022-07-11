@@ -77,7 +77,9 @@ export class RentalComponent implements OnInit {
   }
 
   getDatePicker(){
-    console.log(this.campaignOne.value);
+    if(this.campaignOne.valid){
+      console.log(this.campaignOne.value);
+    }
   }
 
 
