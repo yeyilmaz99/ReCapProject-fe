@@ -58,15 +58,19 @@
 
       </div>
 
-        <input matInput [matDatepicker]="datepicker">
-        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-      <!-- #docregion datepicker-actions -->
-        <mat-datepicker #datepicker>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Cancel</button>
-            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
+
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Alış - Teslim Tarihi Seçiniz</mat-label>
+        <mat-date-range-input
+          [formGroup]="campaignOne"
+          [rangePicker]="campaignOnePicker">
+          <input matStartDate placeholder="Start date" formControlName="start">
+          <input matEndDate placeholder="End date" formControlName="end">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+        <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+      </mat-form-field>
       <!-- #enddocregion datepicker-actions -->
 
       </div>
