@@ -29,12 +29,8 @@ export class RentalComponent implements OnInit {
   car: Car;
   carId: number;
   carImages: CarImage[] = [];
-  rent: Rent = {
-    carId: 0,
-    customerId: 0,
-    rentDate: new Date(),
-    returnDate: null,
-  };
+  returnDate = null;
+
 
   campaignOne: FormGroup;
 
@@ -76,21 +72,10 @@ export class RentalComponent implements OnInit {
     });
   }
 
-  // rentaCar() {
-  //   this.rentalService.addRental(this.rent).subscribe(
-  //     (response) => {
-  //       this.toastrService.success(response.message, 'Başarılı');
-  //     },
-  //     (responseError) => {
-  //       this.toastrService.error(responseError.error.message);
-  //     }
-  //   );
-  // }
-
   datePicker() {
     this.campaignOne = this.formBuilder.group({
       rentDate: [new Date(year, month, today.getDate()), Validators.required],
-      returnDate: [''],
+      returnDate: [this.returnDate],
       customerId: [1, Validators.required],
       carId: [this.carId, Validators.required],
     });
