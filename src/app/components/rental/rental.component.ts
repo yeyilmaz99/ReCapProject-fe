@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
 import { Rental } from 'src/app/models/rental';
@@ -30,8 +30,6 @@ export class RentalComponent implements OnInit {
   carId: number;
   carImages: CarImage[] = [];
   returnDate = null;
-  iyziPay:boolean = false;
-  iyziPaySms:boolean = false;
 
 
   campaignOne: FormGroup;
@@ -41,7 +39,8 @@ export class RentalComponent implements OnInit {
     private rentalService: RentalService,
     private carService: CarService,
     private formBuilder: FormBuilder,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -83,12 +82,15 @@ export class RentalComponent implements OnInit {
     });
   }
 
+
   rentACar() {
     if (this.campaignOne.valid) {
       let rent: Rent = Object.assign({}, this.campaignOne.value);
       this.rentalService.addRental(rent).subscribe(
         (response) => {
-          this.toastrService.success(response.message, 'Başarılı');
+          this.toastrService.success('Lüfen Kredi Kartı Bilgilerinizi Girin');
+          this.router.navigate(["cars/car/:carId:rental/payment"])
+
         },
         (responseError) => {
           this.toastrService.error(responseError.error.message);
@@ -96,13 +98,9 @@ export class RentalComponent implements OnInit {
       );
     }
   }
-  iyziPayTrue(){
-    this.iyziPay = true;
-  }
-  iyziPaySmsTrue(){
-    this.iyziPay = false;
-    this.iyziPaySms =true;
-  }
+
+
+
 
 
 
