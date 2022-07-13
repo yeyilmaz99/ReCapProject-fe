@@ -25,7 +25,8 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { HomeComponent } from './components/home/home.component';
 import { SubscribeFormComponent } from './components/subscribe-form/subscribe-form.component';
-import { AboutUsComponent } from './components/about-us/about-us/about-us.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 
 
@@ -42,7 +43,8 @@ import { AboutUsComponent } from './components/about-us/about-us/about-us.compon
     CarDetailComponent,
     HomeComponent,
     SubscribeFormComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
