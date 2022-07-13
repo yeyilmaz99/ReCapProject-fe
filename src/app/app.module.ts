@@ -25,6 +25,7 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { HomeComponent } from './components/home/home.component';
 import { SubscribeFormComponent } from './components/subscribe-form/subscribe-form.component';
+import { AboutUsComponent } from './components/about-us/about-us/about-us.component';
 
 
 
@@ -40,7 +41,8 @@ import { SubscribeFormComponent } from './components/subscribe-form/subscribe-fo
     CustomerComponent,
     CarDetailComponent,
     HomeComponent,
-    SubscribeFormComponent
+    SubscribeFormComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
