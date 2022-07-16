@@ -3,7 +3,7 @@
         <div class="col" *ngFor="let brand of brands">
             <div class="card" routerLink="/cars/brand/{{brand.brandId}}"  style="width: 18rem;">
                 <img src="assets/images/DefaultImage.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
+                <div class="card-body" style="text-align: center;">
                   <h2 class="card-title">{{brand.brandName}}</h2>
                 </div>
               </div>
