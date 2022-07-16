@@ -2,3 +2,21 @@
 <ul class="list-group" *ngFor="let brand of brands">
     <li routerLink="/cars/brand/{{brand.brandId}}" class="list-group-item">{{brand.brandName}}</li>
 </ul>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col" *ngFor="let brand of brands">
+            <div class="card" routerLink="/cars/brand/{{brand.brandId}}"  style="width: 18rem;">
+                <img src="" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{brand.brandName}}</h5>
+                </div>
+              </div>
+        </div>
+
+    </div>
+</div>
+
+
