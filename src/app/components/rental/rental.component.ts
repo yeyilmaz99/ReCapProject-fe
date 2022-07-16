@@ -13,6 +13,8 @@ import {
 } from '@angular/forms';
 import { Rent } from 'src/app/models/rentModel';
 import { ToastrService } from 'ngx-toastr';
+import { Payment } from 'src/app/models/payment';
+import { PaymentService } from 'src/app/services/paymentService/payment.service';
 
 const today = new Date();
 const month = today.getMonth();
@@ -30,6 +32,7 @@ export class RentalComponent implements OnInit {
   carId: number;
   carImages: CarImage[] = [];
   returnDate = null;
+  paymentForm:FormGroup;
 
 
   campaignOne: FormGroup;
@@ -40,7 +43,8 @@ export class RentalComponent implements OnInit {
     private carService: CarService,
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
-    private router: Router
+    private router: Router,
+    private paymentService:PaymentService
   ) {}
 
   ngOnInit(): void {
@@ -49,9 +53,11 @@ export class RentalComponent implements OnInit {
         this.carId = params['carId'];
         this.getCarDetailsByCarId(params['carId']);
         this.getCarImagesByCarId(params['carId']);
+
       }
     });
     this.datePicker();
+    this.createPaymentForm();
   }
 
   getRentals() {
@@ -96,6 +102,31 @@ export class RentalComponent implements OnInit {
           this.toastrService.error(responseError.error.message);
         }
       );
+    }
+  }
+
+
+
+  createPaymentForm() {
+    this.paymentForm = this.formBuilder.group({
+      cardName: ['',Validators.required],
+      cardNumber: ['',Validators.required],
+      expirationDate: ['',Validators.required],
+      securityCode: ['',Validators.required]
+    });
+  }
+
+  add(){
+    if (this.paymentForm.valid){
+      let payment:Payment = Object.assign({},this.paymentForm.value);
+      this.paymentService.add(payment).subscribe( (response) => {
+        this.toastrService.success(response.message,"Araç Başarıyla Kiralandı");
+
+      },
+      (responseError)=> {
+        this.toastrService.error(responseError.error.message);
+      }
+      )
     }
   }
 
