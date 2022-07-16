@@ -91,11 +91,10 @@ export class RentalComponent implements OnInit {
 
   rentACar() {
     if (this.campaignOne.valid) {
+      console.log(this.campaignOne.value)
       let rent: Rent = Object.assign({}, this.campaignOne.value);
       this.rentalService.addRental(rent).subscribe(
         (response) => {
-          this.toastrService.success('Lüfen Kredi Kartı Bilgilerinizi Girin');
-          this.router.navigate(["cars/car/:carId:rental/payment"])
 
         },
         (responseError) => {
@@ -116,12 +115,13 @@ export class RentalComponent implements OnInit {
     });
   }
 
-  add(){
+  payment(){
     if (this.paymentForm.valid){
       let payment:Payment = Object.assign({},this.paymentForm.value);
       this.paymentService.add(payment).subscribe( (response) => {
         this.toastrService.success(response.message,"Araç Başarıyla Kiralandı");
-
+        this.rentACar();
+        
       },
       (responseError)=> {
         this.toastrService.error(responseError.error.message);
