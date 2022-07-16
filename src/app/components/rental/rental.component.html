@@ -67,8 +67,38 @@
           </mat-form-field>
 
           <div class="card-body">
-            <button class="btn btn-success" (click)="rentACar()">Kirala</button>
+
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              Kirala
+            </button>
+            <!-- <button class="btn btn-success" (click)="rentACar()">Kirala</button> -->
           </div>
+
+
+
+
+
+          <!-- Modal -->
+
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalToggleLabel">Ödeme Bilgileri</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Show a second modal and hide this one with the button below.
+                </div>
+                <div class="modal-footer">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
 
           
 
