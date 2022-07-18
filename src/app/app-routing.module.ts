@@ -21,7 +21,8 @@ const routes: Routes = [
   {path: "about", component:AboutUsComponent},
   {path: "contact", component:ContactUsComponent},
   {path: "add-car", component:CarAddComponent},
-  {path: "add-brand", component:BrandAddComponent}
+  {path: "add-brand", component:BrandAddComponent},
+  
   
 ];
 
