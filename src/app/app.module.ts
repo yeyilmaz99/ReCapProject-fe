@@ -27,6 +27,9 @@ import { HomeComponent } from './components/home/home.component';
 import { SubscribeFormComponent } from './components/subscribe-form/subscribe-form.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
 
 
 
@@ -44,7 +47,10 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     HomeComponent,
     SubscribeFormComponent,
     AboutUsComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    BrandAddComponent,
+    CarAddComponent,
+    ColorAddComponent
   ],
   imports: [
     BrowserModule,
