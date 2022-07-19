@@ -5,6 +5,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { Color } from 'src/app/models/color';
@@ -25,7 +26,8 @@ export class CarAddComponent implements OnInit {
     private brandService: BrandService,
     private colorService: ColorService,
     private formBuilder: FormBuilder,
-    private carService:CarService
+    private carService:CarService,
+    private toastrService:ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +62,11 @@ export class CarAddComponent implements OnInit {
   addCar() {
     if (this.carAddForm.valid) {
       let carToAdd:Car = Object.assign({},this.carAddForm.value);
+      this.carService.addCar(carToAdd).subscribe(response=>{
+        this.toastrService.success("Araç Eklendi")
+      },responseError => {
+        this.toastrService.error(responseError.error)
+      })
       
     }
   }
