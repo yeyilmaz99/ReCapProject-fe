@@ -13,7 +13,6 @@ import { FilterModel } from 'src/app/models/filterModel';
 })
 export class CarService {
   apiUrl = 'https://localhost:44345/api/';
-  type = {colorId:1,brandId:1}
 
   constructor(private httpClient: HttpClient) {}
 
