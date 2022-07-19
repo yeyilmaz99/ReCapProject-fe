@@ -3,13 +3,13 @@
     <div class="col-md-6">
       <form [formGroup]="carAddForm">
         <div class="mb-3">
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" id="brandId" formControlName="brandId" >
             <option selected>Select Brand</option>
             <option *ngFor="let brand of brands" ngValue="brand.brandId"> {{brand.brandName}} </option>
           </select>
         </div>
         <div class="mb-3">
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" id="colorId" formControlName="colorId">
             <option selected>Select Color</option>
             <option *ngFor="let color of colors" ngValue="color.colorId">{{color.colorName}}</option>
           </select>
@@ -22,6 +22,7 @@
             type="text"
             class="form-control"
             id="carName"
+            formControlName="carName"
             placeholder="ex. Volvo"
           />
         </div>
@@ -33,6 +34,7 @@
             type="number"
             class="form-control"
             id="modelYear"
+            formControlName="modelYear"
             placeholder="ex. 1999"
           />
         </div>
@@ -44,6 +46,7 @@
             type="number"
             class="form-control"
             id="dailyPrice"
+            formControlName="dailyPrice"
             placeholder="ex. 1500$"
           />
         </div>
@@ -55,6 +58,7 @@
             type="text"
             class="form-control"
             id="description"
+            formControlName="description"
             placeholder="ex. family car"
           />
         </div>
