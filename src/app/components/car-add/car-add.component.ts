@@ -21,6 +21,7 @@ export class CarAddComponent implements OnInit {
   ngOnInit(): void {
     this.getBrands();
     this.getColors();
+    this.createCarAddForm();
   }
 
   getBrands() {
@@ -38,7 +39,12 @@ export class CarAddComponent implements OnInit {
 
   createCarAddForm(){
     this.carAddForm = this.formBuilder.group({
-      
+      brandId:["",Validators.required],
+      colorId:["",Validators.required],
+      carName:["",Validators.required],
+      modelYear:["",Validators.required],
+      dailyPrice:["",Validators.required],
+      description:["",Validators.required]
     })
   }
 }
