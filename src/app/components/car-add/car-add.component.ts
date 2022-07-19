@@ -40,7 +40,6 @@ export class CarAddComponent implements OnInit {
   getColors() {
     this.colorService.getColors().subscribe((response) => {
       this.colors = response.data;
-      console.log(this.colors);
     });
   }
 
