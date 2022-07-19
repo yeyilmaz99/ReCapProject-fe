@@ -56,7 +56,7 @@ export class CarAddComponent implements OnInit {
 
   addCar() {
     if (this.carAddForm.valid) {
-      console.log(this.carAddForm.value);
+      
     }
   }
 }
