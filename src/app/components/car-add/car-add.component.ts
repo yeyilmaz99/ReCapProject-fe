@@ -6,8 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { Brand } from 'src/app/models/brand';
+import { Car } from 'src/app/models/car';
 import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brandService/brand.service';
+import { CarService } from 'src/app/services/carService/car.service';
 import { ColorService } from 'src/app/services/colorService/color.service';
 
 @Component({
@@ -22,7 +24,8 @@ export class CarAddComponent implements OnInit {
   constructor(
     private brandService: BrandService,
     private colorService: ColorService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private carService:CarService
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +59,7 @@ export class CarAddComponent implements OnInit {
 
   addCar() {
     if (this.carAddForm.valid) {
+      let carToAdd:Car = Object.assign({},this.carAddForm.value);
       
     }
   }
