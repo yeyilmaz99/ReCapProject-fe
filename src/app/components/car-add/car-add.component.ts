@@ -13,9 +13,10 @@ import { ColorService } from 'src/app/services/colorService/color.service';
 export class CarAddComponent implements OnInit {
   brands: Brand[];
   colors: Color[];
-  carAdd:FormGroup;
+  carAddForm:FormGroup;
   constructor(private brandService: BrandService,
-    private colorService:ColorService) {}
+    private colorService:ColorService,
+    private formBuilder:FormBuilder) {}
 
   ngOnInit(): void {
     this.getBrands();
@@ -36,6 +37,8 @@ export class CarAddComponent implements OnInit {
   }
 
   createCarAddForm(){
-    
+    this.carAddForm = this.formBuilder.group({
+      
+    })
   }
 }
