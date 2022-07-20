@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Color } from 'src/app/models/color';
 import { ColorService } from 'src/app/services/colorService/color.service';
 
 @Component({
@@ -27,7 +28,10 @@ export class ColorAddComponent implements OnInit {
 
   addColor(){
     if(this.colorForm.valid){
-      console.log(this.colorForm.value);
+      let colorToAdd:Color = Object.assign({},this.colorForm.value);
+      this.colorService.addColor(colorToAdd).subscribe(response => {
+        
+      })
     }
   }
 
