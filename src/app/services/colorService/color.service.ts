@@ -17,7 +17,7 @@ export class ColorService {
     return this.httpClient.get<ListResponseModel<Color>>(this.apiUrl+"getall");
   }
 
-  addCar(color:Color):Observable<ResponseModel>{
+  addColor(color:Color):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiUrl+"add",color)
   }
 }
