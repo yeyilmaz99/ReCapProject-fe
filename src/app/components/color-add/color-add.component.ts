@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ColorService } from 'src/app/services/colorService/color.service';
 
 @Component({
@@ -9,7 +9,9 @@ import { ColorService } from 'src/app/services/colorService/color.service';
 })
 export class ColorAddComponent implements OnInit {
   colorForm:FormGroup
-  constructor(private colorService:ColorService) { }
+  constructor(private colorService:ColorService,
+    private formBuilder:FormBuilder
+    ) { }
 
   ngOnInit(): void {
 
@@ -17,7 +19,7 @@ export class ColorAddComponent implements OnInit {
 
 
   createColorForm(){
-    
+    this.colorForm = this.formBuilder
   }
 
 
