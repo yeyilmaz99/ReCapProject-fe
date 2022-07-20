@@ -19,7 +19,9 @@ export class ColorAddComponent implements OnInit {
 
 
   createColorForm(){
-    this.colorForm = this.formBuilder
+    this.colorForm = this.formBuilder.group({
+      
+    })
   }
 
 
