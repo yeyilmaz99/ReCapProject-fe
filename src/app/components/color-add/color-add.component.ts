@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ColorService } from 'src/app/services/colorService/color.service';
 
 @Component({
@@ -14,15 +14,23 @@ export class ColorAddComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-
+    this.createColorForm();
   }
 
 
   createColorForm(){
     this.colorForm = this.formBuilder.group({
-      
+      colorName : ["", Validators.required]
     })
   }
+
+
+  addColor(){
+    if(this.colorForm.valid){
+      console.log(this.colorForm.value);
+    }
+  }
+
 
 
 
