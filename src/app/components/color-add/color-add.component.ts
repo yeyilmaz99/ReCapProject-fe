@@ -33,6 +33,8 @@ export class ColorAddComponent implements OnInit {
       let colorToAdd:Color = Object.assign({},this.colorForm.value);
       this.colorService.addColor(colorToAdd).subscribe(response => {
         this.toastrService.success(response.message);
+      },responseError => {
+        this.toastrService.error(responseError.error.message)
       })
     }
   }
