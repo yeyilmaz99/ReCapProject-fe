@@ -30,6 +30,11 @@ export class BrandAddComponent implements OnInit {
       brandName : ["", Validators.required]
     })
   }
+  createBrandToUpdateForm(){
+    this.brandToUpdateForm = this.formBuilder.group({
+      
+    })
+  }
 
 
   addBrand(){
