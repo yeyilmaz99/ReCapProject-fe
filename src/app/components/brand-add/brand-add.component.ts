@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-brand-add',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brand-add.component.css']
 })
 export class BrandAddComponent implements OnInit {
-
+  brandForm:FormGroup
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
+  
 
 }
