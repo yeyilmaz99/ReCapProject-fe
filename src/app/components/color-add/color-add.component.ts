@@ -11,6 +11,9 @@ import { ColorService } from 'src/app/services/colorService/color.service';
 })
 export class ColorAddComponent implements OnInit {
   colorForm:FormGroup
+  colorUpdateForm:FormGroup
+  colors:Color[];
+  colorToUpdate:Color;
   constructor(private colorService:ColorService,
     private formBuilder:FormBuilder,
     private toastrService:ToastrService
@@ -18,12 +21,20 @@ export class ColorAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.createColorForm();
+    this.getColors();
+    this.createColorUpdateForm();
   }
 
 
   createColorForm(){
     this.colorForm = this.formBuilder.group({
       colorName : ["", Validators.required]
+    })
+  }
+  createColorUpdateForm(){
+    this.colorUpdateForm = this.formBuilder.group({
+      colorToUpdate : ["", Validators.required],
+      newColorName: ["", Validators.required]
     })
   }
 
@@ -38,6 +49,17 @@ export class ColorAddComponent implements OnInit {
       })
     }
   }
+
+  getColors(){
+    this.colorService.getColors().subscribe(response => {
+      this.colors = response.data;
+    })
+  }
+
+  selectColor(){
+    console.log(this.colorUpdateForm.value)
+  }
+  
 
 
 
