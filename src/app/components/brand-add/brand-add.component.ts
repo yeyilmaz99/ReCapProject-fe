@@ -12,6 +12,8 @@ import { BrandService } from 'src/app/services/brandService/brand.service';
 export class BrandAddComponent implements OnInit {
   brandForm:FormGroup
   brands:Brand[];
+  brandToUpdate:Brand;
+  brandToUpdateForm:FormGroup;
   constructor( private formBuilder:FormBuilder,
     private brandService:BrandService,
     private toastrService:ToastrService 
@@ -19,6 +21,7 @@ export class BrandAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.createBrandForm();
+    this.getBrands();
   }
 
 
@@ -27,6 +30,7 @@ export class BrandAddComponent implements OnInit {
       brandName : ["", Validators.required]
     })
   }
+
 
   addBrand(){
     if(this.brandForm.valid){
