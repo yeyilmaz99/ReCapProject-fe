@@ -12,7 +12,6 @@ import { BrandService } from 'src/app/services/brandService/brand.service';
 export class BrandAddComponent implements OnInit {
   brandForm:FormGroup
   brands:Brand[];
-  brandToUpdate:Brand;
   brandToUpdateForm:FormGroup;
   constructor( private formBuilder:FormBuilder,
     private brandService:BrandService,
@@ -32,7 +31,7 @@ export class BrandAddComponent implements OnInit {
   }
   createBrandToUpdateForm(){
     this.brandToUpdateForm = this.formBuilder.group({
-      
+
     })
   }
 
@@ -52,6 +51,11 @@ export class BrandAddComponent implements OnInit {
     this.brandService.getBrands().subscribe(response=>{
       this.brands = response.data;
     })
+  }
+
+
+  selectBrand(){
+
   }
 
 }
