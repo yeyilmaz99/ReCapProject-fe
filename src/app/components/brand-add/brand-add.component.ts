@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-brand-add',
@@ -11,12 +11,13 @@ export class BrandAddComponent implements OnInit {
   constructor( private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
+    this.createBrandForm();
   }
 
 
   createBrandForm(){
     this.brandForm = this.formBuilder.group({
-      
+      brandName : ["", Validators.required]
     })
   }
 
