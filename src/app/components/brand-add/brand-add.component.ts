@@ -21,6 +21,7 @@ export class BrandAddComponent implements OnInit {
   ngOnInit(): void {
     this.createBrandForm();
     this.getBrands();
+    this.createBrandToUpdateForm();
   }
 
 
@@ -31,7 +32,8 @@ export class BrandAddComponent implements OnInit {
   }
   createBrandToUpdateForm(){
     this.brandToUpdateForm = this.formBuilder.group({
-
+      brandToUpdate : ["", Validators.required],
+      newBrandName: ["", Validators.required]
     })
   }
 
