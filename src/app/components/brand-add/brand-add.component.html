@@ -17,11 +17,11 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <h4>Select Color To Update</h4>
+        <h4>Select Brand To Update</h4>
         <form [formGroup]="brandToUpdateForm">
           <select
-            id="colorToUpdate"
-            formControlName="colorToUpdate"
+            id="brandToUpdate"
+            formControlName="brandToUpdate"
             class="form-select"
             aria-label="Default select example"
           >
@@ -32,10 +32,10 @@
           <input
             type="text"
             class="form-control mt-3"
-            id="newColorName"
-            formControlName="newColorName"
+            id="newBrandName"
+            formControlName="newBrandName"
           />
-          <button type="submit" (click)="selectColor()" class="btn btn-primary">
+          <button type="submit" (click)="selectBrand()" class="btn btn-primary">
             Submit
           </button>
         </form>
