@@ -14,6 +14,8 @@ export class BrandAddComponent implements OnInit {
   }
 
 
-  
+  createBrandForm(){
+    
+  }
 
 }
