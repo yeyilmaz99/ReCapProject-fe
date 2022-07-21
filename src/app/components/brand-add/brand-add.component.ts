@@ -26,6 +26,8 @@ export class BrandAddComponent implements OnInit {
     })
   }
 
+  
+
 
   addBrand(){
     if(this.brandForm.valid){
