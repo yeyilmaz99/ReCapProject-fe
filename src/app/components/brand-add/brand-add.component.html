@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form [formGroup]="colorForm">
+            <form [formGroup]="brandForm">
                 <div class="mb-3">
                   <label for="colorName" class="form-label">Enter Color Name</label>
                   <input
@@ -11,7 +11,7 @@
                     formControlName="colorName"
                   />
                 </div>
-                <button type="submit" (click)="addColor()" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
               </form>
               
         </div>
