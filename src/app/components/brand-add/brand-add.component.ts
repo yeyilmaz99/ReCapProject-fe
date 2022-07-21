@@ -11,7 +11,7 @@ export class BrandAddComponent implements OnInit {
   constructor( private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
-    this.createBrandForm();
+    
   }
 
 
