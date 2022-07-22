@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
@@ -32,7 +32,8 @@ export class CarDetailComponent implements OnInit {
     private toastrService: ToastrService,
     private router:Router,
     private brandService:BrandService,
-    private colorService:ColorService
+    private colorService:ColorService,
+    private formBuilder:FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +46,7 @@ export class CarDetailComponent implements OnInit {
     });
     this.getBrands();
     this.getColors();
+    this.createUpdateForm();
   }
 
   getCarDetailsByCarId(carId: number) {
@@ -81,7 +83,14 @@ export class CarDetailComponent implements OnInit {
   }
 
   createUpdateForm(){
-
+    this.updateForm = this.formBuilder.group({
+      carName: ["",Validators.required],
+      colorId: ["",Validators.required],
+      brandId: ["",Validators.required],
+      modelYear: ["",Validators.required],
+      dailyPrice: ["", Validators.required],
+      description: ["",Validators.required]
+    })
   }
 
 
