@@ -23,7 +23,7 @@ export class CarDetailComponent implements OnInit {
   carImages: CarImage[] = [];
   brands:Brand[];
   colors:Color[];
-  carUpdateForm:FormGroup;
+  updateForm:FormGroup;
   carId:number;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -78,6 +78,10 @@ export class CarDetailComponent implements OnInit {
     this.colorService.getColors().subscribe(response=>{
       this.colors = response.data
     })
+  }
+
+  createUpdateForm(){
+
   }
 
 
