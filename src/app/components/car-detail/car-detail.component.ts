@@ -25,6 +25,7 @@ export class CarDetailComponent implements OnInit {
   colors:Color[];
   updateForm:FormGroup;
   carId:number;
+  edit:Boolean =false;
   constructor(
     private activatedRoute: ActivatedRoute,
     private carService: CarService,
@@ -94,9 +95,16 @@ export class CarDetailComponent implements OnInit {
   }
   update(){
     if(this.updateForm.valid){
-      let carToUpdate:Car = Object.assign({},this.updateForm.value);
-      carToUpdate.carId = this.carId;
+      let carToUpdate = Object.assign({},this.updateForm.value);
+      carToUpdate.Id = this.carId;
+      this.carService.updateCar(carToUpdate).subscribe(response => {
+        this.toastrService.success(response.message)
+        this.getCarDetailsByCarId(this.carId);
+      })
     }
+  }
+  editForm(){
+    this.edit = true;
   }
 
 
