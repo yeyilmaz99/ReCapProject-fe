@@ -22,6 +22,7 @@ export class BrandService {
   }
 
   updateBrand(brand:Brand):Observable<ResponseModel>{
+    console.log(brand);
     return this.httpClient.patch<ResponseModel>(this.apiUrl+"update",brand);
   }
 
