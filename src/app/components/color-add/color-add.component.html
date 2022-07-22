@@ -22,8 +22,8 @@
       <h4>Select Color To Update</h4>
       <form [formGroup]="colorUpdateForm">
         <select
-          id="colorToUpdate"
-          formControlName="colorToUpdate"
+          id="colorId"
+          formControlName="colorId"
           class="form-select"
           aria-label="Default select example"
         >
@@ -34,8 +34,8 @@
         <input
           type="text"
           class="form-control mt-3"
-          id="newColorName"
-          formControlName="newColorName"
+          id="colorName"
+          formControlName="ColorName"
         />
         <button type="submit" (click)="updateColor()" class="btn btn-primary">
           Submit
