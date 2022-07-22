@@ -86,7 +86,7 @@
                 <h1 class="card-title">{{ car?.carName }}</h1>
               </div>
               <div class="col">
-                <button class="btn btn-primary" style="float: right;">Edit</button>
+                <button class="btn btn-primary" (click)="editForm()" style="float: right;">Edit</button>
               </div>
             </div>
 
@@ -112,7 +112,7 @@
 </div>
 
 
-<div class="container">
+<div class="container" *ngIf="edit">
   <div class="row">
     <div class="col-md-6 card">
       <h1>Update</h1>
