@@ -27,8 +27,8 @@
         <h4 class="mt-2">Select Brand To Update</h4>
         <form [formGroup]="brandToUpdateForm">
           <select
-            id="brandToUpdate"
-            formControlName="brandToUpdate"
+            id="brandId"
+            formControlName="brandId"
             class="form-select"
             aria-label="Default select example"
           >
@@ -40,8 +40,8 @@
           <input
             type="text"
             class="form-control "
-            id="newBrandName"
-            formControlName="newBrandName"
+            id="brandName"
+            formControlName="brandName"
           />
           <button type="submit" (click)="updateBrand()" class="btn btn-primary mt-3 mb-3">
             Submit
