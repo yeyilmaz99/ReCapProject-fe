@@ -58,7 +58,12 @@ export class ColorAddComponent implements OnInit {
   updateColor(){
     if(this.colorUpdateForm.valid){
       let colorToUpdate = Object.assign({},this.colorUpdateForm.value)
-      console.log(colorToUpdate);
+      this.colorService.updateColor(colorToUpdate).subscribe(response => {
+        this.toastrService.success(response.message);
+        
+      },responseError => {
+        this.toastrService.error(responseError.message);
+      })
     }
   }
   
