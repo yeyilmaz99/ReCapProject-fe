@@ -94,7 +94,8 @@ export class CarDetailComponent implements OnInit {
   }
   update(){
     if(this.updateForm.valid){
-      console.log(this.updateForm.value);
+      let carToUpdate:Car = Object.assign({},this.updateForm.value);
+      carToUpdate.carId = this.carId;
     }
   }
 
