@@ -118,26 +118,28 @@
       <h1>Update</h1>
       <form [formGroup]="updateForm">
         <div>
-          <h4>New Car Name</h4>
+          <h4>Enter New Car Name</h4>
           <div class="input-group mb-3">
             <input type="text" id="carName" formControlName="carName" class="form-control" placeholder="Enter Car Name">
           </div>
+          <h4>Select Color</h4>
           <select
             id="colorId"
             formControlName="colorId"
             class="form-select mb-3"
             aria-label="Default select example"
-          ><option selected>Select Color</option>
+          >
             <option *ngFor="let color of colors" ngValue="{{ color.colorId }}">
               {{ color.colorName }}
             </option>
           </select>
+          <h4>Select Brand</h4>
           <select
               id="brandId"
               formControlName="brandId"
               class="form-select mb-3"
               aria-label="Default select example"
-            ><option  selected>Select Brand</option>
+            >
               <option *ngFor="let brand of brands" ngValue="{{ brand.brandId }}">
                 {{ brand.brandName }}
               </option>
