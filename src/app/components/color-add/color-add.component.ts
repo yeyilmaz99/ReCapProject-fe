@@ -13,7 +13,6 @@ export class ColorAddComponent implements OnInit {
   colorForm:FormGroup
   colorUpdateForm:FormGroup
   colors:Color[];
-  colorToUpdate:Color;
   constructor(private colorService:ColorService,
     private formBuilder:FormBuilder,
     private toastrService:ToastrService
@@ -57,7 +56,10 @@ export class ColorAddComponent implements OnInit {
   }
 
   updateColor(){
-    console.log(this.colorUpdateForm.value)
+    if(this.colorUpdateForm.valid){
+      let colorToUpdate = Object.assign({},this.colorUpdateForm.value)
+      console.log(colorToUpdate);
+    }
   }
   
 
