@@ -56,7 +56,7 @@ export class ColorAddComponent implements OnInit {
     })
   }
 
-  selectColor(){
+  updateColor(){
     console.log(this.colorUpdateForm.value)
   }
   
