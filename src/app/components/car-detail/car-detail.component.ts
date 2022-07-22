@@ -92,6 +92,9 @@ export class CarDetailComponent implements OnInit {
       description: ["",Validators.required]
     })
   }
+  update(){
+    
+  }
 
 
 
