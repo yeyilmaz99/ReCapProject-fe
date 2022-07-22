@@ -32,8 +32,8 @@ export class BrandAddComponent implements OnInit {
   }
   createBrandToUpdateForm(){
     this.brandToUpdateForm = this.formBuilder.group({
-      brandToUpdate : ["", Validators.required],
-      newBrandName: ["", Validators.required]
+      brandId : ["", Validators.required],
+      brandName: ["", Validators.required]
     })
   }
 
@@ -43,6 +43,7 @@ export class BrandAddComponent implements OnInit {
       let brandToAdd = Object.assign({}, this.brandForm.value)
       this.brandService.addBrand(brandToAdd).subscribe(response =>{
         this.toastrService.success(response.message);
+        this.getBrands();
       },responseError => {
         this.toastrService.error(responseError.error.message);
       })
@@ -61,6 +62,7 @@ export class BrandAddComponent implements OnInit {
       let brandToUpdate = Object.assign({},this.brandToUpdateForm.value);
       this.brandService.updateBrand(brandToUpdate).subscribe(response=>{
         this.toastrService.success(response.message);
+        this.getBrands();
       },ResponseError => {
         this.toastrService.error(ResponseError.error.message);
       })
