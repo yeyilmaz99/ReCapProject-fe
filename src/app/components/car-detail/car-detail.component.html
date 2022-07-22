@@ -120,10 +120,11 @@
         <div>
           <h4>New Car Name</h4>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter Car Name">
+            <input type="text" id="carName" formControlName="carName" class="form-control" placeholder="Enter Car Name">
           </div>
           <select
             id="colorId"
+            formControlName="colorId"
             class="form-select mb-3"
             aria-label="Default select example"
           ><option selected>Select Color</option>
@@ -133,6 +134,7 @@
           </select>
           <select
               id="brandId"
+              formControlName="brandId"
               class="form-select mb-3"
               aria-label="Default select example"
             ><option  selected>Select Brand</option>
@@ -142,16 +144,18 @@
             </select>
             <h4>Enter Model Year</h4>
             <div class="input-group mt-3 mb-3">
-              <input type="number" class="form-control" placeholder="Model Year">
+              <input id="modelYear" formControlName="modelYear" type="number" class="form-control" placeholder="Model Year">
             </div>
             <h4>Enter Daily Price</h4>
             <div class="input-group mt-3 mb-3">
-              <input type="number" class="form-control" placeholder="Daily Price">
+              <input id="dailyPrice" formControlName="dailyPrice" type="number" class="form-control" placeholder="Daily Price">
             </div>
             <h4>Enter Description</h4>
             <div class="input-group">
-              <textarea class="form-control" aria-label="With textarea" placeholder="Description"></textarea>
+              <textarea id="description" formControlName="description" class="form-control" aria-label="With textarea" placeholder="Description"></textarea>
             </div>
+
+            <button class="btn btn-primary" (click)="update()"> Update</button>
         </div>
       </form>
     </div>
