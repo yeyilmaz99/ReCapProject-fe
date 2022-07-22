@@ -116,12 +116,44 @@
   <div class="row">
     <div class="col-md-6 card">
       <h1>Update</h1>
-      <div class="input-group mb-3">
-        <h4>New Car Name</h4>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Enter Car Name">
+      <form [formGroup]="carUpdateForm">
+        <div>
+          <h4>New Car Name</h4>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter Car Name">
+          </div>
+          <select
+            id="colorId"
+            class="form-select mb-3"
+            aria-label="Default select example"
+          ><option selected>Select Color</option>
+            <option *ngFor="let color of colors" ngValue="{{ color.colorId }}">
+              {{ color.colorName }}
+            </option>
+          </select>
+          <select
+              id="brandId"
+              class="form-select mb-3"
+              aria-label="Default select example"
+            ><option  selected>Select Brand</option>
+              <option *ngFor="let brand of brands" ngValue="{{ brand.brandId }}">
+                {{ brand.brandName }}
+              </option>
+            </select>
+            <h4>Enter Model Year</h4>
+            <div class="input-group mt-3 mb-3">
+              <input type="number" class="form-control" placeholder="Model Year">
+            </div>
+            <h4>Enter Daily Price</h4>
+            <div class="input-group mt-3 mb-3">
+              <input type="number" class="form-control" placeholder="Daily Price">
+            </div>
+            <h4>Enter Description</h4>
+            <div class="input-group">
+              <textarea class="form-control" aria-label="With textarea" placeholder="Description"></textarea>
+            </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
