@@ -56,7 +56,7 @@ export class BrandAddComponent implements OnInit {
   }
 
 
-  selectBrand(){
+  updateBrand(){
     if(this.brandToUpdateForm.valid){
       console.log(this.brandToUpdateForm.value);
     }
