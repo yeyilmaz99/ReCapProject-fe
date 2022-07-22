@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
+import { Color } from 'src/app/models/color';
 import { Rental } from 'src/app/models/rental';
 import { Rent } from 'src/app/models/rentModel';
+import { BrandService } from 'src/app/services/brandService/brand.service';
 import { CarService } from 'src/app/services/carService/car.service';
+import { ColorService } from 'src/app/services/colorService/color.service';
 import { RentalService } from 'src/app/services/rentalService/rental.service';
 
 @Component({
@@ -16,14 +21,18 @@ import { RentalService } from 'src/app/services/rentalService/rental.service';
 export class CarDetailComponent implements OnInit {
   car: Car;
   carImages: CarImage[] = [];
-
+  brands:Brand[];
+  colors:Color[];
+  carUpdateForm:FormGroup;
   carId:number;
   constructor(
     private activatedRoute: ActivatedRoute,
     private carService: CarService,
     private rentalService: RentalService,
     private toastrService: ToastrService,
-    private router:Router
+    private router:Router,
+    private brandService:BrandService,
+    private colorService:ColorService
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +43,8 @@ export class CarDetailComponent implements OnInit {
         this.getCarImagesByCarId(params['carId']);
       }
     });
-
+    this.getBrands();
+    this.getColors();
   }
 
   getCarDetailsByCarId(carId: number) {
@@ -57,4 +67,19 @@ export class CarDetailComponent implements OnInit {
       this.toastrService.error(responseError.error.message)
     });
   }
+
+  getBrands(){
+    this.brandService.getBrands().subscribe(response => {
+      this.brands = response.data
+    })
+  }
+
+  getColors(){
+    this.colorService.getColors().subscribe(response=>{
+      this.colors = response.data
+    })
+  }
+
+
+
 }
