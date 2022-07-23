@@ -96,9 +96,9 @@
             </p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Marka : {{ car.brandName }}</li>
-            <li class="list-group-item">Renk :{{ car.colorName }}</li>
-            <li class="list-group-item">Fiyat : {{ car.dailyPrice }}</li>
+            <li class="list-group-item">Marka : {{ car?.brandName }}</li>
+            <li class="list-group-item">Renk :{{ car?.colorName }}</li>
+            <li class="list-group-item">Fiyat : {{ car?.dailyPrice }}</li>
           </ul>
           <div class="card-body">
             <button class="btn btn-success" (click)="checkIfCarIsReturned()">
@@ -129,8 +129,8 @@
             class="form-select mb-3"
             aria-label="Default select example"
           >
-            <option *ngFor="let color of colors" [ngValue]="color.colorId">
-              {{ color.colorName }}
+            <option *ngFor="let color of colors" [ngValue]="color?.colorId">
+              {{ color?.colorName }}
             </option>
           </select>
           <h4>Select Brand</h4>
@@ -140,8 +140,8 @@
               class="form-select mb-3"
               aria-label="Default select example"
             >
-              <option *ngFor="let brand of brands" [ngValue]="brand.brandId">
-                {{ brand.brandName }}
+              <option *ngFor="let brand of brands" [ngValue]="brand?.brandId">
+                {{ brand?.brandName }}
               </option>
             </select>
             <h4>Enter Model Year</h4>
