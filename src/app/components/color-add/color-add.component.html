@@ -54,9 +54,9 @@
   <div class="row justify-content-center">
     <div class="col-md-6 card mt-5">
       <div class="row justify-content-center mt-2" style="text-align: center;">
-      <h1>Delete a Brand</h1>
+      <h1>Delete a Color</h1>
       </div>
-      <h4>Select a Brand To Delete</h4>
+      <h4>Select a Color To Delete</h4>
       <form [formGroup]="colorToDeleteForm">
         <select id="colorId" formControlName="colorId" class="form-select">
           <option *ngFor="let color of colors" ngValue="{{ color.colorId}}"> {{color.colorName}} </option>
