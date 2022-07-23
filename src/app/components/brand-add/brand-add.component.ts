@@ -78,7 +78,10 @@ export class BrandAddComponent implements OnInit {
   }
   deleteBrand(){
     if(this.brandToDeleteForm.valid){
-      
+      let brandToDelete = Object.assign({},this.brandToDeleteForm.value)
+      this.brandService.deleteBrand(brandToDelete).subscribe(response => {
+        this.toastrService.warning(response.message);
+      })
     }
   }
 
