@@ -76,7 +76,9 @@ export class ColorAddComponent implements OnInit {
   }
 
   deleteColor(){
-
+    if(this.colorToDeleteForm.valid){
+      console.log(this.colorToDeleteForm.value);
+    }
   }
   
 
