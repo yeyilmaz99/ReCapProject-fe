@@ -13,6 +13,7 @@ export class BrandAddComponent implements OnInit {
   brandForm:FormGroup
   brands:Brand[];
   brandToUpdateForm:FormGroup;
+  brandToDeleteForm:FormGroup;
   constructor( private formBuilder:FormBuilder,
     private brandService:BrandService,
     private toastrService:ToastrService 
@@ -22,6 +23,7 @@ export class BrandAddComponent implements OnInit {
     this.createBrandForm();
     this.getBrands();
     this.createBrandToUpdateForm();
+    this.createBrandToDeleteForm();
   }
 
 
@@ -34,6 +36,12 @@ export class BrandAddComponent implements OnInit {
     this.brandToUpdateForm = this.formBuilder.group({
       brandId : ["", Validators.required],
       brandName: ["", Validators.required]
+    })
+  }
+  
+  createBrandToDeleteForm(){
+    this.brandToDeleteForm = this.formBuilder.group({
+      brandId: ["", Validators.required]
     })
   }
 
@@ -66,6 +74,11 @@ export class BrandAddComponent implements OnInit {
       },ResponseError => {
         this.toastrService.error(ResponseError.error.message);
       })
+    }
+  }
+  deleteBrand(){
+    if(this.brandToDeleteForm.valid){
+      
     }
   }
 
