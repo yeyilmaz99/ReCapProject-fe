@@ -13,6 +13,7 @@ export class ColorAddComponent implements OnInit {
   colorForm:FormGroup
   colorUpdateForm:FormGroup
   colors:Color[];
+  colorToDeleteForm:FormGroup;
   constructor(private colorService:ColorService,
     private formBuilder:FormBuilder,
     private toastrService:ToastrService
@@ -22,6 +23,7 @@ export class ColorAddComponent implements OnInit {
     this.createColorForm();
     this.getColors();
     this.createColorUpdateForm();
+    this.createColorToDeleteForm();
   }
 
 
@@ -34,6 +36,11 @@ export class ColorAddComponent implements OnInit {
     this.colorUpdateForm = this.formBuilder.group({
       colorId : ["", Validators.required],
       colorName: ["", Validators.required]
+    })
+  }
+  createColorToDeleteForm(){
+    this.colorToDeleteForm = this.formBuilder.group({
+      colorId: ["",Validators.required]
     })
   }
 
@@ -66,6 +73,10 @@ export class ColorAddComponent implements OnInit {
         this.toastrService.error(responseError.message);
       })
     }
+  }
+
+  deleteColor(){
+
   }
   
 
