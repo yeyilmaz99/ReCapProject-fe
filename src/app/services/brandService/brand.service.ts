@@ -25,5 +25,9 @@ export class BrandService {
     return this.httpClient.patch<ResponseModel>(this.apiUrl+"update",brand);
   }
 
+  deleteBrand(brand:Brand):Observable<ResponseModel>{
+    return this.httpClient.delete<ResponseModel>(this.apiUrl+"delete");
+  }
+
 
 }
