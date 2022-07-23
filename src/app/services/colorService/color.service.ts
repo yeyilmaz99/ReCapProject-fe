@@ -24,4 +24,8 @@ export class ColorService {
   updateColor(color:Color):Observable<ResponseModel>{
     return this.httpClient.patch<ResponseModel>(this.apiUrl+"update",color);
   }
+
+  deleteColor(color:Color):Observable<ResponseModel>{
+    return this.httpClient.delete<ResponseModel>(this.apiUrl+"delete");
+  }
 }
