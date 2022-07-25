@@ -26,7 +26,7 @@ export class BrandService {
   }
 
   deleteBrand(brand:Brand):Observable<ResponseModel>{
-    return this.httpClient.delete<ResponseModel>(this.apiUrl+"delete");
+    return this.httpClient.delete<ResponseModel>(this.apiUrl+"delete" , {body:brand});
   }
 
 
