@@ -7,7 +7,12 @@ import { ColorService } from 'src/app/services/colorService/color.service';
 import { BrandService } from 'src/app/services/brandService/brand.service';
 import { Brand } from 'src/app/models/brand';
 import { Color } from 'src/app/models/color';
-import { FormGroup, FormBuilder, FormControl, Validators} from "@angular/forms";
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { FilterModel } from 'src/app/models/filterModel';
 
 @Component({
@@ -24,7 +29,7 @@ export class CarComponent implements OnInit {
   colors: Color[];
   pageSizeOptions: number[] = [5, 10, 25, 100];
   dataLoaded: boolean = false;
-  carFilterForm:FormGroup;
+  carFilterForm: FormGroup;
 
   constructor(
     private carService: CarService,
@@ -89,21 +94,24 @@ export class CarComponent implements OnInit {
     this.carsSlice = this.cars.slice(startIndex, endIndex);
   }
 
-  createCarFilterForm(){
+  createCarFilterForm() {
     this.carFilterForm = this.formBuilder.group({
-      colorId:["",Validators.required],
-      brandId:["",Validators.required]
-    })
+      colorId: ['', Validators.required],
+      brandId: ['', Validators.required],
+    });
   }
-  filter(){
-    if(this.carFilterForm.valid){
-      let filterModel:FilterModel = Object.assign({},this.carFilterForm.value);
-      this.carService.getCarsByBrandAndColorId(filterModel.colorId,filterModel.brandId).subscribe(response=>{
-        this.cars = response.data
-      })
-
-    }else{
-      
+  filter() {
+    if (this.carFilterForm.valid) {
+      let filterModel: FilterModel = Object.assign(
+        {},
+        this.carFilterForm.value
+      );
+      this.carService
+        .getCarsByBrandAndColorId(filterModel.colorId, filterModel.brandId)
+        .subscribe((response) => {
+          this.cars = response.data;
+        });
+    } else {
     }
   }
-  }
+}
