@@ -81,6 +81,8 @@ export class ColorAddComponent implements OnInit {
       this.colorService.deleteColor(colorToDelete).subscribe(response => {
         this.toastrService.warning(response.message)
         this.getColors();
+      },responseError => {
+        this.toastrService.error(responseError.error.message);
       })
     }
   }
