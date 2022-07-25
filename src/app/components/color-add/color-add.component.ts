@@ -77,7 +77,11 @@ export class ColorAddComponent implements OnInit {
 
   deleteColor(){
     if(this.colorToDeleteForm.valid){
-      console.log(this.colorToDeleteForm.value);
+      let colorToDelete = Object.assign({}, this.colorToDeleteForm.value);
+      this.colorService.deleteColor(colorToDelete).subscribe(response => {
+        this.toastrService.warning(response.message)
+        this.getColors();
+      })
     }
   }
   
