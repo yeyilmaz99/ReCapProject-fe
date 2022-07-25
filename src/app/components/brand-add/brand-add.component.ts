@@ -82,6 +82,8 @@ export class BrandAddComponent implements OnInit {
       this.brandService.deleteBrand(brandToDelete).subscribe(response => {
         this.toastrService.warning(response.message);
         this.getBrands();
+      },responseError => {
+        this.toastrService.error(responseError.error.message);
       })
     }
   }
