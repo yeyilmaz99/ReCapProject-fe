@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
+import { CarDelete } from 'src/app/models/carDelete';
 import { CarImage } from 'src/app/models/carImage';
 import { Color } from 'src/app/models/color';
 import { Rental } from 'src/app/models/rental';
@@ -107,6 +108,14 @@ export class CarDetailComponent implements OnInit {
   }
   editForm(){
     this.edit = true;
+  }
+
+  delete(){
+    let carToDelete: CarDelete = {id:this.carId,brandId:0,carName:'',colorId:0,dailyPrice:0,description:'',modelYear:0}
+    this.carService.deleteCar(carToDelete).subscribe(response => {
+      this.toastrService.warning(response.message)
+      this.router.navigate(['cars']);
+    })
   }
 
 
