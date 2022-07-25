@@ -26,6 +26,6 @@ export class ColorService {
   }
 
   deleteColor(color:Color):Observable<ResponseModel>{
-    return this.httpClient.delete<ResponseModel>(this.apiUrl+"delete");
+    return this.httpClient.delete<ResponseModel>(this.apiUrl+"delete", {body:color});
   }
 }
