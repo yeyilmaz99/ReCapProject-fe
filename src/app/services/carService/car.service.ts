@@ -47,7 +47,7 @@ export class CarService {
   updateCar(car:Car):Observable<ResponseModel>{
     return this.httpClient.patch<ResponseModel>(this.apiUrl+"Cars/update",car)
   }
-  deleteCar(car:CarDelete):Observable<ResponseModel>{
-    return this.httpClient.delete<ResponseModel>(this.apiUrl+"Cars/delete" , {body:car});
+  deleteCar(carToDelete:CarDelete):Observable<ResponseModel>{
+    return this.httpClient.delete<ResponseModel>(this.apiUrl+"Cars/delete" , {body:carToDelete});
   }
 }
