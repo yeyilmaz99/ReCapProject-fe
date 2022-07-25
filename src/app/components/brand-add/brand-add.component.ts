@@ -81,6 +81,7 @@ export class BrandAddComponent implements OnInit {
       let brandToDelete = Object.assign({},this.brandToDeleteForm.value)
       this.brandService.deleteBrand(brandToDelete).subscribe(response => {
         this.toastrService.warning(response.message);
+        this.getBrands();
       })
     }
   }
