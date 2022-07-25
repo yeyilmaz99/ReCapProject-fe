@@ -7,6 +7,7 @@ import { ResponseModel } from 'src/app/models/responseModel';
 import { SignleResponseModel } from 'src/app/models/singleResponseModel';
 import { CarImage } from 'src/app/models/carImage';
 import { FilterModel } from 'src/app/models/filterModel';
+import { CarDelete } from 'src/app/models/carDelete';
 
 @Injectable({
   providedIn: 'root',
@@ -46,7 +47,7 @@ export class CarService {
   updateCar(car:Car):Observable<ResponseModel>{
     return this.httpClient.patch<ResponseModel>(this.apiUrl+"Cars/update",car)
   }
-  deleteCar(car:Car):Observable<ResponseModel>{
-    return this.httpClient.delete<ResponseModel>(this.apiUrl+"Cars/delete");
+  deleteCar(car:CarDelete):Observable<ResponseModel>{
+    return this.httpClient.delete<ResponseModel>(this.apiUrl+"Cars/delete" , {body:car});
   }
 }
