@@ -10,6 +10,7 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: "add-car", component:CarAddComponent},
   {path: "add-brand", component:BrandAddComponent},
   {path: "add-color", component:ColorAddComponent},
-  {path: "login", component:LoginComponent}
+  {path: "login", component:LoginComponent},
+  {path: "register", component:RegisterComponent}
 
   
 ];
