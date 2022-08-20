@@ -31,6 +31,7 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -52,7 +53,8 @@ import { LoginComponent } from './components/login/login.component';
     BrandAddComponent,
     CarAddComponent,
     ColorAddComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
