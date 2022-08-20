@@ -30,6 +30,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -50,7 +51,8 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
     ContactUsComponent,
     BrandAddComponent,
     CarAddComponent,
-    ColorAddComponent
+    ColorAddComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
