@@ -14,6 +14,9 @@ export class AuthService {
 
 
 
-
+  login(loginModel:LoginModel):Observable<SignleResponseModel<TokenModel>>{
+    let newPath = this.apiUrl + "login";
+    return this.httpClient.post<SignleResponseModel<TokenModel>>(newPath,loginModel);
+  }
 
 }
