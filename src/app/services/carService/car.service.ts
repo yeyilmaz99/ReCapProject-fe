@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ListResponseModel } from 'src/app/models/listResponseModel';
 import { Car } from 'src/app/models/car';
 import { ResponseModel } from 'src/app/models/responseModel';
-import { SignleResponseModel } from 'src/app/models/singleResponseModel';
+import { SingleResponseModel } from 'src/app/models/singleResponseModel';
 import { CarImage } from 'src/app/models/carImage';
 import { FilterModel } from 'src/app/models/filterModel';
 import { CarDelete } from 'src/app/models/carDelete';
@@ -30,9 +30,9 @@ export class CarService {
     let newPath = this.apiUrl + 'Cars/getbycolor?colorId=' + colorId;
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
-  getCarDetailsByCarId(carId: number): Observable<SignleResponseModel<Car>> {
+  getCarDetailsByCarId(carId: number): Observable<SingleResponseModel<Car>> {
     let newPath = this.apiUrl + 'Cars/getcardetails?carId=' + carId;
-    return this.httpClient.get<SignleResponseModel<Car>>(newPath);
+    return this.httpClient.get<SingleResponseModel<Car>>(newPath);
   }
   getCarImagesByCarId(carId: number): Observable<ListResponseModel<CarImage>> {
     let newPath = this.apiUrl + 'CarImages/getall?carId=' + carId;
