@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-5">
+    <form [formGroup]="loginForm" class="col-md-5">
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
       <div class="form-floating">
         <input
+          formControlName="email"
           type="email"
           class="form-control"
           id="floatingInput"
@@ -14,6 +14,7 @@
       </div>
       <div class="form-floating mt-3">
         <input
+        formControlName="password"
           type="password"
           class="form-control"
           id="floatingPassword"
@@ -27,11 +28,11 @@
           <input type="checkbox" value="remember-me" /> Remember me
         </label>
       </div>
-      <button class="w-100 btn btn-lg btn-primary" type="submit">
+      <button class="w-100 btn btn-lg btn-primary" (click)="login()" type="submit">
         Sign in
       </button>
       <p>If you dont have a account please <a  routerLink="/register">register</a></p>
       <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
-    </div>
+    </form>
   </div>
 </div>
