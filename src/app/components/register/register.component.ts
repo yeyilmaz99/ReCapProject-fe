@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { RegisterModel } from 'src/app/models/register';
+import { AuthService } from 'src/app/services/authService/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +12,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   constructor(
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private authService: AuthService,
+    private toastrService:ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +34,15 @@ export class RegisterComponent implements OnInit {
 
   register(){
     if(this.registerForm.valid){
-      console.log(this.registerForm.value);
+      let registerModel: RegisterModel = Object.assign({},this.registerForm.value);
+      this.authService.register(registerModel).subscribe(response => {
+        this.toastrService.success(response.message);
+        console.log(response.success);
+      },responseError=>{
+        this.toastrService.error(responseError.error);
+      })
+    }else{
+      this.toastrService.error('Lütfen boş alanları doldurunuz')
     }
   }
   
