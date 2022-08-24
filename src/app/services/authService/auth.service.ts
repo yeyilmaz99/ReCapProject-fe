@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginModel } from 'src/app/models/login';
 import { RegisterModel } from 'src/app/models/register';
-import { SignleResponseModel } from 'src/app/models/singleResponseModel';
-import { TokenModel } from 'src/app/models/token';
+import { SingleResponseModel } from 'src/app/models/singleResponseModel';
+import { TokenModel } from 'src/app/models/tokenModel';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +15,24 @@ export class AuthService {
 
 
 
-  login(loginModel:LoginModel):Observable<SignleResponseModel<TokenModel>>{
+  login(loginModel:LoginModel):Observable<SingleResponseModel<TokenModel>>{
     let newPath = this.apiUrl + "login";
-    return this.httpClient.post<SignleResponseModel<TokenModel>>(newPath,loginModel);
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(newPath,loginModel);
   }
 
-  register(registerModel:RegisterModel):Observable<SignleResponseModel<TokenModel>>{
+
+  register(registerModel:RegisterModel):Observable<SingleResponseModel<TokenModel>>{
     let newPath = this.apiUrl + "register";
-    return this.httpClient.post<SignleResponseModel<TokenModel>>(newPath,registerModel);
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(newPath,registerModel);
+  }
+
+  isAuthenticated(){
+    if(localStorage.getItem("token")){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
 }
