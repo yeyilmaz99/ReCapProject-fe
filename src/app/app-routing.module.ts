@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {path: "", pathMatch:"full", component:HomeComponent},
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: "cars/car/:carId/rental", component:RentalComponent},
   {path: "about", component:AboutUsComponent},
   {path: "contact", component:ContactUsComponent},
-  {path: "add-car", component:CarAddComponent},
+  {path: "add-car", component:CarAddComponent, canActivate:[LoginGuard]},
   {path: "add-brand", component:BrandAddComponent},
   {path: "add-color", component:ColorAddComponent},
   {path: "login", component:LoginComponent},
