@@ -35,7 +35,11 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginModel).subscribe((response)=>{
         this.toastrService.success(response.message, 'Giriş Yapıldı')
         localStorage.setItem('token', response.data.token);
+      },responseError=>{
+        this.toastrService.error(responseError.error);
       })
+    }else{
+      this.toastrService.error('Lütfen Boş Alanları Doldurunuz!')
     }
   }
 
