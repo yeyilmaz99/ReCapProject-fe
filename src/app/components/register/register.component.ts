@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
         this.toastrService.error(responseError.error);
       })
     }else{
-      this.toastrService.error('Lütfen boş alanları doldurunuz')
+      this.toastrService.error('Lütfen Boş Alanları Doldurunuz')
     }
   }
   
