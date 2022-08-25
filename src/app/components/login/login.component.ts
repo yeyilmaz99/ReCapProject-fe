@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
       let loginModel = Object.assign({},this.loginForm.value)
       this.authService.login(loginModel).subscribe((response)=>{
         this.toastrService.success(response.message, 'Giriş Yapıldı')
-        console.log(response.data.token);
         localStorage.setItem('token', response.data.token);
       })
     }
