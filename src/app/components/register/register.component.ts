@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RegisterModel } from 'src/app/models/register';
 import { AuthService } from 'src/app/services/authService/auth.service';
@@ -14,7 +15,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder:FormBuilder,
     private authService: AuthService,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +38,7 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm.valid){
       let registerModel: RegisterModel = Object.assign({},this.registerForm.value);
       this.authService.register(registerModel).subscribe(response => {
+        
         this.toastrService.success(response.message);
         localStorage.setItem('token', response.data.token)
       },responseError=>{
