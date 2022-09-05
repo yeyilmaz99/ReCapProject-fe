@@ -39,7 +39,6 @@ export class AuthService {
     let token = this.getToken();
     if(token != null){
       let tokenDetails = Object.entries(this.jwtHelper.decodeToken(token))
-      console.log(tokenDetails);
       let claims : Claims = new Claims;
       tokenDetails.forEach(detail => {
         switch(detail[0]){
@@ -49,12 +48,25 @@ export class AuthService {
           }
           case "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier":{
             claims.userId = Number(detail[1])
+            break;
+          }
+          case "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name":{
+            claims.fullName = String(detail[1]);
+            break;
+          }
+          case "http://schemas.microsoft.com/ws/2008/06/identity/claims/role":{
+            claims.roles = detail[1] as Array<string>
+            break;
           }
         }
-      })
-        
-      
+      });
+      if(!claims.roles){
+        claims.roles = [];
+      }
+      return claims
+  
     }
+    return undefined
   }
 
   getToken(){
