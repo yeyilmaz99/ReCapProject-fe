@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { JwtModule } from '@auth0/angular-jwt';
 
 
 
@@ -34,7 +35,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
-
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 
 @NgModule({
@@ -70,6 +73,11 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     MatFormFieldModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter
+      },
     }),
   ],
   providers: [
