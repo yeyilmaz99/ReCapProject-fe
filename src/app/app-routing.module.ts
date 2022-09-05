@@ -15,20 +15,20 @@ import { RentalComponent } from './components/rental/rental.component';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  {path: "", pathMatch:"full", component:HomeComponent},
-  {path:"cars", component: CarComponent},
-  {path:"cars/brand/:brandId", component: CarComponent},
-  {path:"cars/color/:colorId", component: CarComponent},
-  {path:"cars/car/:carId", component:CarDetailComponent},
-  {path: "brand", component:BrandComponent},
-  {path: "cars/car/:carId/rental", component:RentalComponent},
-  {path: "about", component:AboutUsComponent},
-  {path: "contact", component:ContactUsComponent},
-  {path: "add-car", component:CarAddComponent, canActivate:[LoginGuard]},
-  {path: "add-brand", component:BrandAddComponent},
-  {path: "add-color", component:ColorAddComponent},
-  {path: "login", component:LoginComponent},
-  {path: "register", component:RegisterComponent}
+  {path:  "", pathMatch:"full", component:HomeComponent},
+  {path:  "cars", component: CarComponent},
+  {path:  "cars/brand/:brandId", component: CarComponent},
+  {path:  "cars/color/:colorId", component: CarComponent},
+  {path:  "cars/car/:carId", component:CarDetailComponent},
+  {path:  "brand", component:BrandComponent},
+  {path:  "cars/car/:carId/rental", component:RentalComponent, canActivate:[LoginGuard]},
+  {path:  "about", component:AboutUsComponent},
+  {path:  "contact", component:ContactUsComponent},
+  {path:  "add-car", component:CarAddComponent, canActivate:[LoginGuard]},
+  {path:  "add-brand", component:BrandAddComponent},
+  {path:  "add-color", component:ColorAddComponent},
+  {path:  "login", component:LoginComponent},
+  {path:  "register", component:RegisterComponent}
 
   
 ];
