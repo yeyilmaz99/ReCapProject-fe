@@ -28,7 +28,6 @@ export class AuthService {
 
   isAuthenticated(){
     if(localStorage.getItem("token")){
-      this.getClaims()
       return true;
     }
     else{
