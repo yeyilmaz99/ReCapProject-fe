@@ -34,6 +34,7 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -58,7 +59,8 @@ export function tokenGetter() {
     CarAddComponent,
     ColorAddComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
