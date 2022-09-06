@@ -35,6 +35,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserProfileSettingsComponent } from './components/user-profile-settings/user-profile-settings.component';
+import { CompanySettingsComponent } from './components/company-settings/company-settings.component';
+import { UserRentalsComponent } from './components/user-rentals/user-rentals.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -60,7 +63,10 @@ export function tokenGetter() {
     ColorAddComponent,
     LoginComponent,
     RegisterComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserProfileSettingsComponent,
+    CompanySettingsComponent,
+    UserRentalsComponent
   ],
   imports: [
     BrowserModule,
