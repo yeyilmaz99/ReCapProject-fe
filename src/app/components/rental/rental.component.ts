@@ -31,7 +31,7 @@ export class RentalComponent implements OnInit {
   car: Car;
   carId: number;
   carImages: CarImage[] = [];
-  returnDate = null;
+  returnDate:Date = null;
   paymentForm:FormGroup;
 
 
