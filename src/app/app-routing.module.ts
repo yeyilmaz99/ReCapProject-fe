@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
   {path:  "add-brand", component:BrandAddComponent},
   {path:  "add-color", component:ColorAddComponent},
   {path:  "login", component:LoginComponent},
-  {path:  "register", component:RegisterComponent}
+  {path:  "register", component:RegisterComponent},
+  {path: "profile", component:UserProfileComponent}
 
   
 ];
