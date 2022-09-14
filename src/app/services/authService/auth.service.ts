@@ -7,13 +7,19 @@ import { SingleResponseModel } from 'src/app/models/singleResponseModel';
 import { TokenModel } from 'src/app/models/tokenModel';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Claims } from 'src/app/models/claims';
+import { LocalStorageService } from '../localStorage/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   apiUrl = 'https://localhost:44345/api/Auth/'
-  constructor(private httpClient:HttpClient, private jwtHelper: JwtHelperService) { }
+  constructor(
+    private httpClient:HttpClient, 
+    private jwtHelper: JwtHelperService,
+    private localStorageService:LocalStorageService
+
+    ) { }
 
   login(loginModel:LoginModel):Observable<SingleResponseModel<TokenModel>>{
     let newPath = this.apiUrl + "login";
@@ -27,11 +33,15 @@ export class AuthService {
   }
 
   logOut(){
-    localStorage.removeItem("token");
+    this.localStorageService.deleteItem("token")
+  }
+  
+  getToken(){
+    return this.localStorageService.getItem("token");
   }
 
   isAuthenticated(){
-    if(localStorage.getItem("token")){
+    if(this.getToken()){
       return true;
     }
     else{
@@ -71,11 +81,5 @@ export class AuthService {
     }
     return undefined
   }
-
-  getToken(){
-    return localStorage.getItem("token");
-  }
-
-
 
 }
