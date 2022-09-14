@@ -31,7 +31,7 @@ const routes: Routes = [
   {path:  "add-color", component:ColorAddComponent},
   {path:  "login", component:LoginComponent},
   {path:  "register", component:RegisterComponent},
-  {path: "profile", component:UserProfileComponent},
+  {path:  "profile", component:UserProfileComponent},
   {path : "profile/settings", component:UserProfileSettingsComponent}
 
   
