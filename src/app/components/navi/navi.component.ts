@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Claims } from 'src/app/models/claims';
 import { AuthService } from 'src/app/services/authService/auth.service';
 
@@ -9,7 +11,11 @@ import { AuthService } from 'src/app/services/authService/auth.service';
 })
 export class NaviComponent implements OnInit {
 
-  constructor(private authService:AuthService) { }
+  constructor(
+    private authService:AuthService,
+    private router:Router,
+    private toastrService:ToastrService
+    ) { }
 
   ngOnInit(): void {
     this.getClaims();
@@ -32,6 +38,11 @@ export class NaviComponent implements OnInit {
       let claims:Claims | undefined = this.authService.getClaims();
       this.claims = claims;
     }
+  }
+  logOut(){
+    this.authService.logOut();
+    this.router.navigate(['']);
+    this.toastrService.info("Successfully Logged Out");
   }
 
 
