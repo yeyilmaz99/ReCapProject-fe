@@ -25,10 +25,6 @@ export class UserProfileComponent implements OnInit {
     if(this.authService.isAuthenticated()){
       let claims:Claims | undefined = this.authService.getClaims();
       this.claims = claims;
-      let mySplitResult = this.claims?.fullName.split(" ");
-      this.lastName =  mySplitResult[mySplitResult.length-1];
-      const lastIndexOfSpace = claims.fullName.lastIndexOf(' ');
-      this.firstName = claims.fullName.substring(0, lastIndexOfSpace)
     }
   }
 
