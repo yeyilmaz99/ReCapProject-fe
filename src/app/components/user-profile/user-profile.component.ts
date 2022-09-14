@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/authService/auth.service';
 })
 export class UserProfileComponent implements OnInit {
 
+
   constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
@@ -16,8 +17,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   claims:Claims | undefined = {email:"",fullName:"",roles:[""],userId:0};
-  firstName:string|undefined;
-  lastName:string|undefined;
+  firstName:string|undefined = "";
+  lastName:string|undefined = "";
 
 
   getClaims(){
@@ -25,11 +26,9 @@ export class UserProfileComponent implements OnInit {
       let claims:Claims | undefined = this.authService.getClaims();
       this.claims = claims;
       let mySplitResult = this.claims?.fullName.split(" ");
-      let lastName =  mySplitResult[mySplitResult.length-1]
-      console.log(lastName)
+      this.lastName =  mySplitResult[mySplitResult.length-1];
       const lastIndexOfSpace = claims.fullName.lastIndexOf(' ');
       this.firstName = claims.fullName.substring(0, lastIndexOfSpace)
-      console.log(this.firstName)
     }
   }
 
