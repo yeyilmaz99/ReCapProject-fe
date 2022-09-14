@@ -26,6 +26,10 @@ export class AuthService {
     return this.httpClient.post<SingleResponseModel<TokenModel>>(newPath,registerModel);
   }
 
+  logOut(){
+    localStorage.removeItem("token");
+  }
+
   isAuthenticated(){
     if(localStorage.getItem("token")){
       return true;
