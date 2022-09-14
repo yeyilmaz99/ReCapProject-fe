@@ -36,13 +36,13 @@ export class LoginComponent implements OnInit {
       let loginModel = Object.assign({},this.loginForm.value)
       this.authService.login(loginModel).subscribe((response)=>{
         this.router.navigate(['cars'])
-        this.toastrService.success(response.message, 'Giriş Yapıldı')
+        this.toastrService.success(response.message, 'Successfully Logged In')
         localStorage.setItem('token', response.data.token);
       },responseError=>{
         this.toastrService.error(responseError.error);
       })
     }else{
-      this.toastrService.error('Lütfen Boş Alanları Doldurunuz!')
+      this.toastrService.error('Please fill in the blanks!')
     }
   }
 
