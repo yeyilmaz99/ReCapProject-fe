@@ -38,6 +38,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { UserProfileSettingsComponent } from './components/user-profile-settings/user-profile-settings.component';
 import { CompanySettingsComponent } from './components/company-settings/company-settings.component';
 import { UserRentalsComponent } from './components/user-rentals/user-rentals.component';
+import { UserProfileInfoComponent } from './components/user-profile-info/user-profile-info.component';
+import { UserCompanySettingsComponent } from './components/user-company-settings/user-company-settings.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -66,7 +68,9 @@ export function tokenGetter() {
     UserProfileComponent,
     UserProfileSettingsComponent,
     CompanySettingsComponent,
-    UserRentalsComponent
+    UserRentalsComponent,
+    UserProfileInfoComponent,
+    UserCompanySettingsComponent
   ],
   imports: [
     BrowserModule,
