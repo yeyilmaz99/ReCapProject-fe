@@ -10,6 +10,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { JwtModule } from '@auth0/angular-jwt';
+import {MatTableModule} from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -80,6 +82,8 @@ export function tokenGetter() {
     MatNativeDateModule,
     MatPaginatorModule,
     FormsModule,
+    MatTableModule,
+    MatTabsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
     MatFormFieldModule,
