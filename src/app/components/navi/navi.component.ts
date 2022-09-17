@@ -44,6 +44,13 @@ export class NaviComponent implements OnInit {
     this.router.navigate(['']);
     this.toastrService.info("Successfully Logged Out");
   }
+  isAdmin(){
+    if(this.authService.isAdmin()){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
 
 }
