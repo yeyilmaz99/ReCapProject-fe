@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RentalService } from 'src/app/services/rentalService/rental.service';
 
 @Component({
   selector: 'app-user-rentals',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserRentalsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private rentalService:RentalService) { }
 
   ngOnInit(): void {
+    this.rentalService.getRentals()
   }
 
 }
