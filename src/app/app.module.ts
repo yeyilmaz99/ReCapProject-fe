@@ -42,6 +42,7 @@ import { CompanySettingsComponent } from './components/company-settings/company-
 import { UserRentalsComponent } from './components/user-rentals/user-rentals.component';
 import { UserProfileInfoComponent } from './components/user-profile-info/user-profile-info.component';
 import { UserCompanySettingsComponent } from './components/user-company-settings/user-company-settings.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -72,7 +73,8 @@ export function tokenGetter() {
     CompanySettingsComponent,
     UserRentalsComponent,
     UserProfileInfoComponent,
-    UserCompanySettingsComponent
+    UserCompanySettingsComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
