@@ -9,6 +9,7 @@ import { CarImage } from 'src/app/models/carImage';
 import { Color } from 'src/app/models/color';
 import { Rental } from 'src/app/models/rental';
 import { Rent } from 'src/app/models/rentModel';
+import { AuthService } from 'src/app/services/authService/auth.service';
 import { BrandService } from 'src/app/services/brandService/brand.service';
 import { CarService } from 'src/app/services/carService/car.service';
 import { ColorService } from 'src/app/services/colorService/color.service';
@@ -35,7 +36,8 @@ export class CarDetailComponent implements OnInit {
     private router:Router,
     private brandService:BrandService,
     private colorService:ColorService,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private authService:AuthService
   ) {}
 
   
@@ -116,6 +118,14 @@ export class CarDetailComponent implements OnInit {
       this.toastrService.warning(response.message)
       this.router.navigate(['cars']);
     })
+  }
+
+  isAdmin(){
+    if(this.authService.isAdmin()){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 
