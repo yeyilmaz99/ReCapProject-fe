@@ -77,16 +77,13 @@
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-5">
       <div class="right-content">
         <div class="card" style="width: 18rem">
           <div class="card-body">
             <div class="row mt-2 mb-2">
               <div class="col">
                 <h1 class="card-title">{{ car?.carName }}</h1>
-              </div>
-              <div class="col">
-                <button class="btn btn-primary" (click)="editForm()" style="float: right;">Edit</button>
               </div>
             </div>
 
@@ -104,12 +101,23 @@
             <button class="btn btn-success" (click)="checkIfCarIsReturned()">
               Kirala
             </button>
+            <button class="btn btn-danger" style="padding-bottom: 0px; margin-left: 30px;">
+              <span class="material-symbols-outlined">
+                favorite
+                </span>
+            </button>
           </div>
         </div>
       </div>
     </div>
+    <div class="col-md-1">
+      <div class="col" *ngIf="isAdmin()">
+        <button class="btn btn-primary" (click)="editForm()" style="float: right;">Edit</button>
+      </div>
+    </div>
   </div>
 </div>
+
 
 
 <div class="container mt-5" *ngIf="edit">
