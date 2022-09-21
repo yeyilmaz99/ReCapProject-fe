@@ -8,6 +8,7 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
 import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -34,7 +35,8 @@ const routes: Routes = [
   {path:  "register", component:RegisterComponent},
   {path:  "profile", component:UserProfileComponent},
   {path: "profile/settings", component:UserProfileSettingsComponent},
-  {path: "rentals", component:UserRentalsComponent}
+  {path: "rentals", component:UserRentalsComponent},
+  {path: "favorites", component:FavoritesComponent, canActivate:[LoginGuard]}
 
   
 ];
