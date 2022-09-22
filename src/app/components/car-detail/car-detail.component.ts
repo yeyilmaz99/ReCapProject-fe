@@ -8,6 +8,7 @@ import { CarDelete } from 'src/app/models/carDelete';
 import { CarImage } from 'src/app/models/carImage';
 import { Claims } from 'src/app/models/claims';
 import { Color } from 'src/app/models/color';
+import { Favorite } from 'src/app/models/favorite';
 import { Rental } from 'src/app/models/rental';
 import { Rent } from 'src/app/models/rentModel';
 import { AuthService } from 'src/app/services/authService/auth.service';
@@ -31,6 +32,7 @@ export class CarDetailComponent implements OnInit {
   carId:number;
   edit:Boolean =false;
   claims:Claims | undefined = {email:"",fullName:"",roles:[""],userId:0};
+  checkIfAlreadyAddedToFav:boolean = false;
   constructor(
     private activatedRoute: ActivatedRoute,
     private carService: CarService,
@@ -55,6 +57,8 @@ export class CarDetailComponent implements OnInit {
     this.getBrands();
     this.getColors();
     this.createUpdateForm();
+    this.getClaims();
+    this.checkIfAlreadyAddedToFavs();
   }
 
   getCarDetailsByCarId(carId: number) {
@@ -127,7 +131,10 @@ export class CarDetailComponent implements OnInit {
   }
 
   getClaims(){
-
+    if(this.isLoggedIn()){
+      let claims:Claims | undefined = this.authService.getClaims();
+      this.claims = claims;
+    }
   }
 
   isLoggedIn(){
@@ -135,8 +142,26 @@ export class CarDetailComponent implements OnInit {
   }
 
   addToFavorites(){
-    this.toastrService.success("Favorilere Eklendi");
+    let newFavorite:Favorite = {brandName:"",carName:"",carId:0,colorName:"",dailyPrice:0,description:"",userId:0,userName:""}
+    newFavorite.carId = this.carId;
+    newFavorite.userId = this.claims.userId;
+
+    this.favoriteService.addToFavorites(newFavorite).subscribe(response =>{
+      this.toastrService.success(response.message,"Added To Favorites");
+    },responseError =>{
+      this.toastrService.error(responseError.error.message);
+    })
   }
+
+  checkIfAlreadyAddedToFavs(){
+    this.favoriteService.checkIfAlreadyAddedToFavs(this.carId,this.claims.userId).subscribe(response=>{
+      this.checkIfAlreadyAddedToFav = response.success;
+    },responseError => {
+      this.checkIfAlreadyAddedToFav = responseError.error.success;
+    })
+  }
+
+
 
 
 
