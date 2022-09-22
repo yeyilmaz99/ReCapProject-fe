@@ -25,12 +25,7 @@ export class NaviComponent implements OnInit {
 
 
   isLoggedIn(): boolean{
-    if(this.authService.isAuthenticated() == true){
-      return true;
-
-    }else{
-      return false;
-    }
+    return this.authService.isAuthenticated();
   }
 
   getClaims(){
@@ -45,11 +40,7 @@ export class NaviComponent implements OnInit {
     this.toastrService.info("Successfully Logged Out");
   }
   isAdmin(){
-    if(this.authService.isAdmin()){
-      return true;
-    }else{
-      return false;
-    }
+  return this.authService.isAdmin()
   }
 
 
