@@ -106,6 +106,14 @@
                 favorite
                 </span>
             </button>
+            <button [ngClass]="{'d-none' : checkIfAlreadyAddedToFav}" class="btn btn-danger" *ngIf="isLoggedIn()"  style="padding-bottom: 0px; margin-left: 30px;">
+              <span class="material-symbols-outlined">
+                heart_broken
+                </span>
+            </button>
+
+
+
           </div>
         </div>
       </div>
