@@ -22,5 +22,10 @@ export class FavoriteService {
     return this.httpClient.post<ResponseModel>(newPath,favorite);
   }
 
+  checkIfAlreadyAddedToFavs(carId:number,userId:number):Observable<ResponseModel>{
+    let newPath = this.apiUrl + `checkifalreadyaddedtofavorites?carId=${carId}&userId=${userId}`
+    return this.httpClient.get<ResponseModel>(newPath);
+  }
+
 
 }
