@@ -128,6 +128,10 @@ export class CarDetailComponent implements OnInit {
     }
   }
 
+  addToFavorites(){
+    this.toastrService.success("Favorilere Eklendi");
+  }
+
 
 
 }
