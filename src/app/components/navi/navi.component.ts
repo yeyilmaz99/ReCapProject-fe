@@ -40,7 +40,7 @@ export class NaviComponent implements OnInit {
     this.toastrService.info("Successfully Logged Out");
   }
   isAdmin(){
-  return this.authService.isAdmin()
+  return this.authService.isAdmin();
   }
 
 
