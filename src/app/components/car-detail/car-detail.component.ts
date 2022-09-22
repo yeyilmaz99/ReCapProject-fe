@@ -151,6 +151,8 @@ export class CarDetailComponent implements OnInit {
     },responseError =>{
       this.toastrService.error(responseError.error.message);
     })
+
+    this.checkIfAlreadyAddedToFav = false;
   }
 
   checkIfAlreadyAddedToFavs(){
@@ -159,6 +161,18 @@ export class CarDetailComponent implements OnInit {
     },responseError => {
       this.checkIfAlreadyAddedToFav = responseError.error.success;
     })
+  }
+
+  deleteFromFavorites(){
+    let favoriteToDelete:Favorite = {brandName:"",carName:"",carId:this.carId,colorName:"",dailyPrice:0,description:"",userId:this.claims.userId,userName:""}
+    this.favoriteService.deleteFromFavorites(favoriteToDelete).subscribe(response=>{
+      this.toastrService.error(response.message,"Deleted From Favorites")
+    },responseError=>{
+      this.toastrService.error(responseError.error.message);
+    })
+    this.checkIfAlreadyAddedToFav = true;
+
+
   }
 
 
