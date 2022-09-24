@@ -40,15 +40,13 @@ export class FavoritesComponent implements OnInit {
     }
   }
 
-  deleteFromFavorites(){
-    let favoriteToDelete:Favorite = {brandName:"",carName:"",carId:0,colorName:"",dailyPrice:0,description:"",userId:0,userName:""}
+  deleteFromFavorites(carId:number){
+    let favoriteToDelete:Favorite = {brandName:"",carName:"",carId:carId,colorName:"",dailyPrice:0,description:"",userId:this.claims.userId,userName:""}
     this.favoriteService.deleteFromFavorites(favoriteToDelete).subscribe(response=>{
       this.toastrService.error(response.message,"Deleted From Favorites")
     },responseError=>{
       this.toastrService.error(responseError.error.message);
     })
-
+    this.getFavoritesByUserId();
   }
-
-
 }
