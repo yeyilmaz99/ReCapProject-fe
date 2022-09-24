@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Favorite } from 'src/app/models/favorite';
 import { FavoriteService } from 'src/app/services/favoriteService/favorite.service';
 
@@ -9,7 +10,10 @@ import { FavoriteService } from 'src/app/services/favoriteService/favorite.servi
 })
 export class FavoritesComponent implements OnInit {
 
-  constructor(private favoriteService:FavoriteService) { }
+  constructor(
+    private favoriteService:FavoriteService,
+    private toastrService:ToastrService
+    ) { }
   favorites:Favorite[] = []
 
   ngOnInit(): void {
@@ -21,6 +25,17 @@ export class FavoritesComponent implements OnInit {
     this.favoriteService.getFavorites(userId).subscribe(response => {
       this.favorites = response.data;
     })
+  }
+
+
+  deleteFromFavorites(){
+    let favoriteToDelete:Favorite = {brandName:"",carName:"",carId:0,colorName:"",dailyPrice:0,description:"",userId:0,userName:""}
+    this.favoriteService.deleteFromFavorites(favoriteToDelete).subscribe(response=>{
+      this.toastrService.error(response.message,"Deleted From Favorites")
+    },responseError=>{
+      this.toastrService.error(responseError.error.message);
+    })
+
   }
 
 
