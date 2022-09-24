@@ -22,12 +22,13 @@ export class FavoritesComponent implements OnInit {
   favorites:Favorite[] = []
 
   ngOnInit(): void {
+    this.getClaims();
     this.getFavoritesByUserId();
   }
 
 
-  getFavoritesByUserId(userId:number = 1002){
-    this.favoriteService.getFavorites(userId).subscribe(response => {
+  getFavoritesByUserId(){
+    this.favoriteService.getFavorites(this.claims.userId).subscribe(response => {
       this.favorites = response.data;
     })
   }
