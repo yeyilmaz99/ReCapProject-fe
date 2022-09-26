@@ -44,7 +44,9 @@
             <li class="nav-item" *ngIf="isLoggedIn()">
               <div class="dropdown-center">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{claims?.fullName}}
+                  <span class="material-symbols-outlined">
+                    person
+                    </span>
                 </button>
                 <ul class="dropdown-menu" >
                   <li><a class="dropdown-item" routerLink="/profile">Profil</a></li>
