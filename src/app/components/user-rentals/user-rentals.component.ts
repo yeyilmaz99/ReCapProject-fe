@@ -23,7 +23,6 @@ export class UserRentalsComponent implements OnInit {
   ngOnInit(): void {
     this.getClaims();
     this.getRentals();
-    console.log(this.rentals)
   }
 
   getClaims(){
