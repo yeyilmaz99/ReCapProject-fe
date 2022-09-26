@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Claims } from 'src/app/models/claims';
 import { Rental } from 'src/app/models/rental';
+import { RentalDetails } from 'src/app/models/rentalDetails';
 import { Rentals } from 'src/app/models/rentals';
 import { AuthService } from 'src/app/services/authService/auth.service';
 import { RentalService } from 'src/app/services/rentalService/rental.service';
@@ -11,7 +12,7 @@ import { RentalService } from 'src/app/services/rentalService/rental.service';
   styleUrls: ['./user-rentals.component.css']
 })
 export class UserRentalsComponent implements OnInit {
-  rentals:Rental[] = [];
+  rentals:RentalDetails[] = [];
   claims:Claims | undefined = {email:"",fullName:"",roles:[""],userId:0};
   constructor(
     private rentalService:RentalService,
@@ -33,9 +34,8 @@ export class UserRentalsComponent implements OnInit {
   }
 
   getRentals(){
-    let userId = this.claims.userId;
-    this.rentalService.getRentalsByUserId(userId).subscribe(response =>{
-      response.data = this.rentals;
+    this.rentalService.getRentalsByUserId(this.claims.userId).subscribe(response =>{
+      this.rentals = response.data
     })
   }
 
