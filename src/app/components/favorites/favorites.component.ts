@@ -30,6 +30,7 @@ export class FavoritesComponent implements OnInit {
   getFavoritesByUserId(){
     this.favoriteService.getFavorites(this.claims.userId).subscribe(response => {
       this.favorites = response.data;
+      this.checkFavorites();
     })
   }
 
@@ -48,5 +49,13 @@ export class FavoritesComponent implements OnInit {
       this.toastrService.error(responseError.error.message);
     })
     this.getFavoritesByUserId();
+  }
+
+
+  checkFavorites(){
+    if(this.favorites.length < 1 ){
+      let element = document.querySelector(".favorites");
+      element.innerHTML = "You dont have any favorites yet"
+    }
   }
 }
