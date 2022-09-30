@@ -33,6 +33,7 @@ export class CarDetailComponent implements OnInit {
   edit:Boolean =false;
   claims:Claims | undefined = {email:"",fullName:"",roles:[""],userId:0};
   checkIfAlreadyAddedToFav:boolean = false;
+  checkIfCarIsReturnedClass:boolean = true;
   constructor(
     private activatedRoute: ActivatedRoute,
     private carService: CarService,
@@ -57,6 +58,7 @@ export class CarDetailComponent implements OnInit {
     this.getBrands();
     this.getColors();
     this.createUpdateForm();
+    this.checkIfCarIsReturned();
     this.getClaims();
     this.checkIfAlreadyAddedToFavs();
   }
@@ -76,8 +78,9 @@ export class CarDetailComponent implements OnInit {
 
   checkIfCarIsReturned(){
     this.rentalService.checkIfCarIsReturned(this.carId).subscribe(response => {
-      this.router.navigate(["cars/car/"+this.carId+"/rental"])
+      this.checkIfCarIsReturnedClass = response.success;
     },responseError => {
+      this.checkIfCarIsReturnedClass = false;
       this.toastrService.error(responseError.error.message)
     });
   }
@@ -127,7 +130,10 @@ export class CarDetailComponent implements OnInit {
   }
 
   isAdmin():boolean{
-    return this.authService.isAdmin()
+    if(this.isLoggedIn()){
+      return this.authService.isAdmin()
+    }
+    return false;
   }
 
   getClaims(){
@@ -142,10 +148,7 @@ export class CarDetailComponent implements OnInit {
   }
 
   addToFavorites(){
-    let newFavorite:Favorite = {brandName:"",carName:"",carId:0,colorName:"",dailyPrice:0,description:"",userId:0,userName:""}
-    newFavorite.carId = this.carId;
-    newFavorite.userId = this.claims.userId;
-
+    let newFavorite:Favorite = {brandName:"",carName:"",carId:this.carId,colorName:"",dailyPrice:0,description:"",userId:this.claims.userId,userName:""}
     this.favoriteService.addToFavorites(newFavorite).subscribe(response =>{
       this.toastrService.success(response.message,"Added To Favorites");
     },responseError =>{
