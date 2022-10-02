@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
@@ -36,9 +37,8 @@ const routes: Routes = [
   {path:  "profile", component:UserProfileComponent},
   {path: "profile/settings", component:UserProfileSettingsComponent},
   {path: "rentals", component:UserRentalsComponent},
-  {path: "favorites", component:FavoritesComponent, canActivate:[LoginGuard]}
-
-  
+  {path: "favorites", component:FavoritesComponent, canActivate:[LoginGuard]},
+  {path: "dashboard", component:AdminDashboardComponent, canActivate:[LoginGuard]}
 ];
 
 @NgModule({
