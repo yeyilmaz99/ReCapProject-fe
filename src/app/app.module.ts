@@ -43,6 +43,7 @@ import { UserRentalsComponent } from './components/user-rentals/user-rentals.com
 import { UserProfileInfoComponent } from './components/user-profile-info/user-profile-info.component';
 import { UserCompanySettingsComponent } from './components/user-company-settings/user-company-settings.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -74,7 +75,8 @@ export function tokenGetter() {
     UserRentalsComponent,
     UserProfileInfoComponent,
     UserCompanySettingsComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
