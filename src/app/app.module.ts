@@ -9,9 +9,10 @@ import { ToastrModule } from 'ngx-toastr';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { JwtModule } from '@auth0/angular-jwt';
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
+import { JwtModule } from '@auth0/angular-jwt';
+
 
 
 
@@ -37,14 +38,10 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { UserProfileSettingsComponent } from './components/user-profile-settings/user-profile-settings.component';
-import { CompanySettingsComponent } from './components/company-settings/company-settings.component';
-import { UserRentalsComponent } from './components/user-rentals/user-rentals.component';
-import { UserProfileInfoComponent } from './components/user-profile-info/user-profile-info.component';
-import { UserCompanySettingsComponent } from './components/user-company-settings/user-company-settings.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { AdminComponentsModule } from './components/admin/components/admin-components.module';
 import { AdminComponent } from './components/admin/admin.component';
+import { UserComponentsModule } from './components/user-profile/components/user-components.module';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -71,12 +68,6 @@ export function tokenGetter() {
     LoginComponent,
     RegisterComponent,
     UserProfileComponent,
-    UserProfileSettingsComponent,
-    CompanySettingsComponent,
-    UserRentalsComponent,
-    UserProfileInfoComponent,
-    UserCompanySettingsComponent,
-    FavoritesComponent,
     AdminComponent
   ],
   imports: [
@@ -92,6 +83,7 @@ export function tokenGetter() {
     ReactiveFormsModule,
     MatDatepickerModule,
     AdminComponentsModule,
+    UserComponentsModule,
     MatFormFieldModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
