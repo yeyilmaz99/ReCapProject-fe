@@ -14,9 +14,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
-import { UserProfileSettingsComponent } from './components/user-profile-settings/user-profile-settings.component';
+
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { UserRentalsComponent } from './components/user-rentals/user-rentals.component';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
@@ -34,9 +33,6 @@ const routes: Routes = [
   {path:  "add-color", component:ColorAddComponent},
   {path:  "login", component:LoginComponent},
   {path:  "register", component:RegisterComponent},
-  {path:  "profile", component:UserProfileComponent},
-  {path: "profile/settings", component:UserProfileSettingsComponent},
-  {path: "rentals", component:UserRentalsComponent},
   {path: "favorites", component:FavoritesComponent, canActivate:[LoginGuard]},
   {path:'admin',redirectTo:'admin/dashboard',pathMatch:'full'},
   {
@@ -45,6 +41,16 @@ const routes: Routes = [
     children: [{
       path: '',
       loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)
+    }],
+    canActivate:[LoginGuard]
+  },
+  {path:'user',redirectTo:'user/info',pathMatch:'full'},
+  {
+    path: 'user',
+    component: UserProfileComponent,
+    children: [{
+      path: '',
+      loadChildren: () => import('./components/user-profile/user.module').then(m => m.UserModule)
     }],
     canActivate:[LoginGuard]
   }
