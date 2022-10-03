@@ -1,36 +1,10 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-1">
-      <div class="d-flex flex-column flex-shrink-0 p-3" style="width: 240px">
-        <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
-            <a class="nav-link link-dark" [ngClass]="{'active' : userInfo}" (click)="enableInfo()"> Profile </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-dark" [ngClass]="{'active' : userSettings}" (click)="enableSettings()" aria-current="page"> Edit Profile </a>
-          </li>
-          <li>
-            <a class="nav-link link-dark" [ngClass]="{'active' : userCompany}" aria-current="page" (click)="enableCompany()"> Company Settings </a>
-          </li>
-          <li>
-            <a  class="nav-link link-dark" [ngClass]="{'active' : userRentals}" aria-current="page" (click)="enableRentals()"> Previous Rentals </a>
-          </li>
-        </ul>
-      </div>
+    <div class="col-md-4">
+      <app-user-sidebar></app-user-sidebar>
     </div>
-    <div class="col-md-11">
-      <div class="row" *ngIf="userInfo">
-        <app-user-profile-info></app-user-profile-info>
-      </div>
-      <div class="row" *ngIf="userSettings">
-        <app-user-profile-settings></app-user-profile-settings>
-      </div>
-      <div class="row" *ngIf="userCompany">
-        <app-user-company-settings></app-user-company-settings>
-      </div>
-      <div class="row" *ngIf="userRentals">
-        <app-user-rentals></app-user-rentals>
-      </div>
+    <div class="col-md-8">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
