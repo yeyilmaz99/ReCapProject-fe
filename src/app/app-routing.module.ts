@@ -38,14 +38,17 @@ const routes: Routes = [
   {path: "profile/settings", component:UserProfileSettingsComponent},
   {path: "rentals", component:UserRentalsComponent},
   {path: "favorites", component:FavoritesComponent, canActivate:[LoginGuard]},
+  {path:'admin',redirectTo:'admin/dashboard',pathMatch:'full'},
   {
     path: 'admin',
     component: AdminComponent,
     children: [{
       path: '',
       loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)
-    }]
+    }],
+    canActivate:[LoginGuard]
   }
+
 ];
 
 @NgModule({
