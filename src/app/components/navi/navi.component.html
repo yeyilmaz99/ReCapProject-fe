@@ -51,7 +51,7 @@
                 <ul class="dropdown-menu" >
                   <li><a class="dropdown-item" routerLink="/profile">Profil</a></li>
                   <li><a class="dropdown-item" routerLink="/favorites">Favorites</a></li>
-                  <li><a class="dropdown-item" *ngIf="isAdmin()" href="#">Admin Page</a></li>
+                  <li><a class="dropdown-item" *ngIf="isAdmin()" routerLink="/admin/dashboard">Admin Page</a></li>
                   <li><a class="dropdown-item" (click)="logOut()">Log Out</a></li>
                 </ul>
               </div>
