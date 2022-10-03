@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { AdminComponent } from './components/admin/admin.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
@@ -36,7 +37,15 @@ const routes: Routes = [
   {path:  "profile", component:UserProfileComponent},
   {path: "profile/settings", component:UserProfileSettingsComponent},
   {path: "rentals", component:UserRentalsComponent},
-  {path: "favorites", component:FavoritesComponent, canActivate:[LoginGuard]}
+  {path: "favorites", component:FavoritesComponent, canActivate:[LoginGuard]},
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [{
+      path: '',
+      loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)
+    }]
+  }
 ];
 
 @NgModule({
