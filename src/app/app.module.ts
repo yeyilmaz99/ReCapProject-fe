@@ -43,7 +43,8 @@ import { UserRentalsComponent } from './components/user-rentals/user-rentals.com
 import { UserProfileInfoComponent } from './components/user-profile-info/user-profile-info.component';
 import { UserCompanySettingsComponent } from './components/user-company-settings/user-company-settings.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
-import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { AdminComponentsModule } from './components/admin/components/admin-components.module';
+import { AdminComponent } from './components/admin/admin.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -76,7 +77,7 @@ export function tokenGetter() {
     UserProfileInfoComponent,
     UserCompanySettingsComponent,
     FavoritesComponent,
-    AdminDashboardComponent
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -90,6 +91,7 @@ export function tokenGetter() {
     MatTabsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    AdminComponentsModule,
     MatFormFieldModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
