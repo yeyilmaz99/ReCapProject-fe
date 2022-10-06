@@ -6,6 +6,12 @@
             <div class="row justify-content-center mt-3 mb-3 text-center">
               <h1 style="font-size: 40px">Current Rentals</h1>
             </div>
+            <div class="container">
+              <div class="row justify-content-center" *ngIf="!dataLoaded">
+                <div class="spinner-border text-primary" style="width: 300px; height: 300px;" role="status">
+                  <span class="sr-only"></span>
+                </div>
+              </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-0 rentals">
                 <div class="card shadow-sm" *ngFor="let rental of rentals" routerLink="/cars/car/{{ rental.carId }}">
                   <svg
