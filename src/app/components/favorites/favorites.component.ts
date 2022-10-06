@@ -12,6 +12,7 @@ import { FavoriteService } from 'src/app/services/favoriteService/favorite.servi
 })
 export class FavoritesComponent implements OnInit {
   claims:Claims | undefined = {email:"",fullName:"",roles:[""],userId:0};
+  dataLoaded:boolean = false;
 
 
   constructor(
@@ -30,6 +31,7 @@ export class FavoritesComponent implements OnInit {
   getFavoritesByUserId(){
     this.favoriteService.getFavorites(this.claims.userId).subscribe(response => {
       this.favorites = response.data;
+      this.dataLoaded = true;
       this.checkFavorites();
     })
   }
