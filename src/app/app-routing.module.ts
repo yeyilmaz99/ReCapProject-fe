@@ -36,20 +36,20 @@ const routes: Routes = [
   {path: "favorites", component:FavoritesComponent, canActivate:[LoginGuard]},
   {path:'admin',redirectTo:'admin/dashboard',pathMatch:'full'},
   {
-    path: 'admin',
+    path: '',
     component: AdminComponent,
     children: [{
-      path: '',
+      path: 'admin',
       loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)
     }],
     canActivate:[LoginGuard]
   },
   {path:'user',redirectTo:'user/info',pathMatch:'full'},
   {
-    path: 'user',
+    path: '',
     component: UserProfileComponent,
     children: [{
-      path: '',
+      path: 'user',
       loadChildren: () => import('./components/user-profile/user.module').then(m => m.UserModule)
     }],
     canActivate:[LoginGuard]
@@ -58,7 +58,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
