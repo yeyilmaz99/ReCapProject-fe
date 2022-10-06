@@ -10,7 +10,7 @@ import { RentalService } from 'src/app/services/rentalService/rental.service';
   styleUrls: ['./user-rentals.component.css']
 })
 export class UserRentalsComponent implements OnInit {
-
+  dataLoaded:boolean= false;
   rentals:RentalDetails[] = [];
   claims:Claims | undefined = {email:"",fullName:"",roles:[""],userId:0};
   constructor(
@@ -34,6 +34,7 @@ export class UserRentalsComponent implements OnInit {
   getRentals(){
     this.rentalService.getRentalsByUserId(this.claims.userId).subscribe(response =>{
       this.rentals = response.data
+      this.dataLoaded = true;
       this.checkRentals();
     })
   }
