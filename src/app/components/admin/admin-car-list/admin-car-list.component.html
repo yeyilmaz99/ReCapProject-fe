@@ -8,6 +8,7 @@
               <th scope="col">Brand Name</th>
               <th scope="col">Color</th>
               <th scope="col">Daily Price</th>
+              <th scope="col">#</th>
             </tr>
           </thead>
           <tbody>
@@ -17,6 +18,16 @@
               <td>{{car.brandName}}</td>
               <td>{{car.colorName}}</td>
               <td>{{car.dailyPrice}}</td>
+              <td><div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" routerLink="/cars/car/{{car.carId}}">View</a></li>
+                  <li><a class="dropdown-item" (click)="delete(car.carId)" style="cursor: pointer;">Delete</a></li>
+                  <li><a class="dropdown-item" href="#">Update</a></li>
+                </ul>
+              </div></td>
             </tr>
           </tbody>
         </table>
