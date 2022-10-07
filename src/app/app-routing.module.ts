@@ -36,20 +36,20 @@ const routes: Routes = [
   {path: "favorites", component:FavoritesComponent, canActivate:[LoginGuard]},
   {path:'admin',redirectTo:'admin/dashboard',pathMatch:'full'},
   {
-    path: '',
+    path: 'admin',
     component: AdminComponent,
     children: [{
-      path: 'admin',
+      path: '',
       loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)
     }],
     canActivate:[LoginGuard]
   },
   {path:'user',redirectTo:'user/info',pathMatch:'full'},
   {
-    path: '',
+    path: 'user',
     component: UserProfileComponent,
     children: [{
-      path: 'user',
+      path: '',
       loadChildren: () => import('./components/user-profile/user.module').then(m => m.UserModule)
     }],
     canActivate:[LoginGuard]
