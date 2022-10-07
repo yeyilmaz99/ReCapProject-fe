@@ -42,6 +42,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { AdminComponentsModule } from './components/admin/components/admin-components.module';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserComponentsModule } from './components/user-profile/components/user-components.module';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -85,6 +86,7 @@ export function tokenGetter() {
     AdminComponentsModule,
     UserComponentsModule,
     MatFormFieldModule,
+    SweetAlert2Module.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),
