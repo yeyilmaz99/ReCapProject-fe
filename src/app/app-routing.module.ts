@@ -4,10 +4,9 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { BrandComponent } from './components/brand/brand.component';
-import { CarAddComponent } from './components/car-add/car-add.component';
-import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { CarComponent } from './components/car/car.component';
-import { ColorAddComponent } from './components/color-add/color-add.component';
+import { ColorAddComponent } from './components/color/color-add/color-add.component';
+import { ColorComponent } from './components/color/color.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { HomeComponent } from './components/home/home.component';
@@ -20,17 +19,30 @@ import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {path:  "", pathMatch:"full", component:HomeComponent},
-  {path:  "cars", component: CarComponent},
-  {path:  "cars/brand/:brandId", component: CarComponent},
-  {path:  "cars/color/:colorId", component: CarComponent},
-  {path:  "cars/car/:carId", component:CarDetailComponent},
+  {
+    path: 'cars',
+    component: CarComponent,
+    children: [{
+      path: '',
+      loadChildren: () => import('./components/car/car.module').then(m => m.CarModule)
+    }],
+    canActivate:[LoginGuard]
+  },
+  {path: "color",redirectTo:"color/settings", pathMatch:"full"},
+  {
+    path: 'color',
+    component: ColorComponent,
+    children: [{
+      path: '',
+      loadChildren: () => import('./components/color/color.module').then(m => m.ColorModule)
+    }],
+    canActivate:[LoginGuard]
+  },
   {path:  "brand", component:BrandComponent},
   {path:  "cars/car/:carId/rental", component:RentalComponent, canActivate:[LoginGuard]},
   {path:  "about", component:AboutUsComponent},
   {path:  "contact", component:ContactUsComponent},
-  {path:  "add-car", component:CarAddComponent, canActivate:[LoginGuard]},
   {path:  "add-brand", component:BrandAddComponent},
-  {path:  "add-color", component:ColorAddComponent},
   {path:  "login", component:LoginComponent},
   {path:  "register", component:RegisterComponent},
   {path: "favorites", component:FavoritesComponent, canActivate:[LoginGuard]},
