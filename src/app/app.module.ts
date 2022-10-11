@@ -26,19 +26,15 @@ import { NaviComponent } from './components/navi/navi.component';
 import { CarComponent } from './components/car/car.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { CustomerComponent } from './components/customer/customer.component';
-import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { HomeComponent } from './components/home/home.component';
 import { SubscribeFormComponent } from './components/subscribe-form/subscribe-form.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
-import { CarAddComponent } from './components/car-add/car-add.component';
-import { ColorAddComponent } from './components/color-add/color-add.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { FavoritesComponent } from './components/favorites/favorites.component';
 import { AdminComponentsModule } from './components/admin/components/admin-components.module';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserComponentsModule } from './components/user-profile/components/user-components.module';
@@ -58,14 +54,11 @@ export function tokenGetter() {
     CarComponent,
     RentalComponent,
     CustomerComponent,
-    CarDetailComponent,
     HomeComponent,
     SubscribeFormComponent,
     AboutUsComponent,
     ContactUsComponent,
     BrandAddComponent,
-    CarAddComponent,
-    ColorAddComponent,
     LoginComponent,
     RegisterComponent,
     UserProfileComponent,
