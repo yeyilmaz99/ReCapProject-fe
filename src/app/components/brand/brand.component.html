@@ -1,13 +1,5 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="card mt-4" *ngFor="let brand of brands" routerLink="/cars/brand/{{brand.brandId}}" style="width: 18rem;">
-            <img src="assets/images/DefaultImage.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h2 class="card-title">{{brand.brandName}}</h2>
-            </div>
-        </div>
-    </div>
-</div>
+<router-outlet></router-outlet>
+
 
 
 <div class="mt-5">
