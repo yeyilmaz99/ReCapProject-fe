@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color/color-add/color-add.component';
@@ -38,11 +37,9 @@ const routes: Routes = [
     }],
     canActivate:[LoginGuard]
   },
-  {path:  "brand", component:BrandComponent},
   {path:  "cars/car/:carId/rental", component:RentalComponent, canActivate:[LoginGuard]},
   {path:  "about", component:AboutUsComponent},
   {path:  "contact", component:ContactUsComponent},
-  {path:  "add-brand", component:BrandAddComponent},
   {path:  "login", component:LoginComponent},
   {path:  "register", component:RegisterComponent},
   {path: "favorites", component:FavoritesComponent, canActivate:[LoginGuard]},
@@ -63,6 +60,15 @@ const routes: Routes = [
     children: [{
       path: '',
       loadChildren: () => import('./components/user-profile/user.module').then(m => m.UserModule)
+    }],
+    canActivate:[LoginGuard]
+  },
+  {
+    path: 'brand',
+    component: BrandComponent,
+    children: [{
+      path: '',
+      loadChildren: () => import('./components/brand/brand.module').then(m => m.BrandModule)
     }],
     canActivate:[LoginGuard]
   }
