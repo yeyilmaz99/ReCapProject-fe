@@ -30,7 +30,6 @@ import { HomeComponent } from './components/home/home.component';
 import { SubscribeFormComponent } from './components/subscribe-form/subscribe-form.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
@@ -58,7 +57,6 @@ export function tokenGetter() {
     SubscribeFormComponent,
     AboutUsComponent,
     ContactUsComponent,
-    BrandAddComponent,
     LoginComponent,
     RegisterComponent,
     UserProfileComponent,
