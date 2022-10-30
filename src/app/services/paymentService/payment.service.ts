@@ -8,7 +8,7 @@ import { ResponseModel } from 'src/app/models/responseModel';
   providedIn: 'root'
 })
 export class PaymentService {
-  apiUrl = "https://localhost:44345/api/Payment/add"
+  apiUrl = "https://localhost:5001/api/Payment/add"
 
   constructor(
     private httpClient:HttpClient
