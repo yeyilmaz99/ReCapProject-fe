@@ -13,7 +13,7 @@ export class UserService {
     private httpClient: HttpClient
   ) { }
 
-  apiUrl = "https://localhost:44345/api/Users/"
+  apiUrl = "https://localhost:5001/api/Users/"
 
 
   getUsers():Observable<ListResponseModel<User>>{
