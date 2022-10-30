@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AdminBrandListComponent } from './admin-brand-list/admin-brand-list.component';
 
 import { AdminCarListComponent } from './admin-car-list/admin-car-list.component'; 
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
@@ -10,5 +11,6 @@ export const AdminRoutes:Routes = [
     {path: 'dashboard', component:AdminDashboardComponent},
     {path: 'car-list', component:AdminCarListComponent},
     {path: 'user-list', component:AdminUserListComponent},
-    {path: 'rental-list', component:AdminRentalListComponent}
+    {path: 'rental-list', component:AdminRentalListComponent},
+    {path: 'brand-list', component:AdminBrandListComponent}
 ]
