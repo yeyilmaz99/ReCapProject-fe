@@ -17,6 +17,7 @@ import { CarService } from 'src/app/services/carService/car.service';
 import { ColorService } from 'src/app/services/colorService/color.service';
 import { FavoriteService } from 'src/app/services/favoriteService/favorite.service';
 import { RentalService } from 'src/app/services/rentalService/rental.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';  
 
 @Component({
   selector: 'app-car-detail',
@@ -122,10 +123,27 @@ export class CarDetailComponent implements OnInit {
   }
 
   delete(){
-    let carToDelete: CarDelete = {id:this.carId,brandId:0,carName:'',colorId:0,dailyPrice:0,description:'',modelYear:0}
-    this.carService.deleteCar(carToDelete).subscribe(response => {
-      this.toastrService.warning(response.message)
-      this.router.navigate(['cars']);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+        let carToDelete: CarDelete = {id:this.carId,brandId:0,carName:'',colorId:0,dailyPrice:0,description:'',modelYear:0}
+        this.carService.deleteCar(carToDelete).subscribe(response => {
+          this.toastrService.warning(response.message)
+        })
+        this.router.navigate(['cars'])
+      }
     })
   }
 
