@@ -13,7 +13,7 @@ import { LocalStorageService } from '../localStorage/local-storage.service';
   providedIn: 'root'
 })
 export class AuthService {
-  apiUrl = 'https://localhost:44345/api/Auth/'
+  apiUrl = 'https://localhost:5001/api/Auth/'
   constructor(
     private httpClient:HttpClient, 
     private jwtHelper: JwtHelperService,
