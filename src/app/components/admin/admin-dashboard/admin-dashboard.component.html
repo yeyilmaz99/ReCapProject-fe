@@ -70,13 +70,37 @@
                 </div>
               </div>
             </div>
-
-
             <h1 *ngIf="usersDataLoaded" class="card-title pricing-card-title">
               {{users.length}}
             </h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>Users</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div  class="card mb-4 rounded-3 shadow-sm" routerLink="/brand">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Brands</h4>
+          </div>
+          <div class="card-body">
+            <div class="container">
+              <div class="row justify-content-center" *ngIf="!brandsDataLoaded">
+                <div
+                  class="spinner-border text-primary"
+                  style="width: 30px; height: 30px"
+                  role="status"
+                >
+                  <span class="sr-only"></span>
+                </div>
+              </div>
+            </div>
+            <h1 *ngIf="brandsDataLoaded" class="card-title pricing-card-title">
+              {{brands.length}}
+            </h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Brands Currently</li>
             </ul>
           </div>
         </div>
