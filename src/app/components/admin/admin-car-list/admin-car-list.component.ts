@@ -49,8 +49,8 @@ export class AdminCarListComponent implements OnInit {
         let carToDelete: CarDelete = {id:carToDeleteId,brandId:0,carName:'',colorId:0,dailyPrice:0,description:'',modelYear:0}
         this.carService.deleteCar(carToDelete).subscribe(response => {
           this.toastrService.warning(response.message)
+          this.getCars();
         })
-        this.getCars();
       }
     })
     
