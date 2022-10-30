@@ -68,8 +68,7 @@ const routes: Routes = [
     children: [{
       path: '',
       loadChildren: () => import('./components/brand/brand.module').then(m => m.BrandModule)
-    }],
-    canActivate:[LoginGuard]
+    }]
   }
 
 ];
