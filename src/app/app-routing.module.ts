@@ -24,8 +24,7 @@ const routes: Routes = [
     children: [{
       path: '',
       loadChildren: () => import('./components/car/car.module').then(m => m.CarModule)
-    }],
-    canActivate:[LoginGuard]
+    }]
   },
   {path: "color",redirectTo:"color/settings", pathMatch:"full"},
   {
