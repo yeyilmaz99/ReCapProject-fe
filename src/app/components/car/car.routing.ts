@@ -9,6 +9,6 @@ import { CarsComponent } from './cars/cars.component';
 
 export const CarRoutes:Routes = [
     {path:  "car/:carId", component:CarDetailComponent},
-    {path:  "add", component:CarAddComponent, canActivate:[LoginGuard]},
+    {path:  "add", component:CarAddComponent},
     {path: "", pathMatch:"full", component:CarsComponent}
 ]
