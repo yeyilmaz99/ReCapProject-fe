@@ -36,7 +36,7 @@ const routes: Routes = [
     }],
     canActivate:[LoginGuard]
   },
-  {path:  "cars/car/:carId/rental", component:RentalComponent, canActivate:[LoginGuard]},
+  {path:  "user/rentals", component:RentalComponent, canActivate:[LoginGuard]},
   {path:  "about", component:AboutUsComponent},
   {path:  "contact", component:ContactUsComponent},
   {path:  "login", component:LoginComponent},
