@@ -3,7 +3,7 @@ import { LoginGuard } from 'src/app/guards/login.guard';
 import { CarAddComponent } from './car-add/car-add.component';
 import { CarDetailComponent } from './car-detail/car-detail.component';
 import { CarsComponent } from './cars/cars.component';
-import { RentalComponent } from './rental/rental.component';
+import { RentalComponent } from './rentacar/rental.component';
 
 
 
