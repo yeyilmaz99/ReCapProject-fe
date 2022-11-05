@@ -27,7 +27,6 @@ export class RentalService {
   getAllRentals():Observable<ListResponseModel<Rental>>{
     return this.httpClient.get<ListResponseModel<Rental>>(this.apiUrl+"getall");
   }
-
   getRentalsByUserId(userId:number):Observable<ListResponseModel<RentalDetails>>{
     return this.httpClient.get<ListResponseModel<RentalDetails>>(this.apiUrl+"getrentaldetailsbyuserid?userId="+ userId);
   }
