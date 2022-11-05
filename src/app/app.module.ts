@@ -38,6 +38,7 @@ import { AdminComponentsModule } from './components/admin/components/admin-compo
 import { AdminComponent } from './components/admin/admin.component';
 import { UserComponentsModule } from './components/user-profile/components/user-components.module';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -60,7 +61,8 @@ export function tokenGetter() {
     LoginComponent,
     RegisterComponent,
     UserProfileComponent,
-    AdminComponent
+    AdminComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
