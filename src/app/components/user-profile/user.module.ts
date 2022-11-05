@@ -14,6 +14,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import { FavoritesComponent } from '../favorites/favorites.component';
+import { UserFavoritesComponent } from './user-favorites/user-favorites.component';
 
 
 
@@ -37,7 +38,7 @@ import { FavoritesComponent } from '../favorites/favorites.component';
     UserCompanyComponent,
     UserSettingsComponent,
     UserInfoComponent,
-    FavoritesComponent
+    UserFavoritesComponent
   ]
 })
 
