@@ -7,6 +7,9 @@ import { CarAddComponent } from './car-add/car-add.component';
 import { CarDetailComponent } from './car-detail/car-detail.component';
 import { CarsComponent } from './cars/cars.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { RentalComponent } from './rental/rental.component';
 
 
 
@@ -16,13 +19,16 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RouterModule.forChild(CarRoutes),
     FormsModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatFormFieldModule
 
   ],
   declarations: [
     CarAddComponent,
     CarDetailComponent,
-    CarsComponent
+    CarsComponent,
+    RentalComponent
   ]
 })
 
