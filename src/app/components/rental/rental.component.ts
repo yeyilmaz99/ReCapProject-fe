@@ -15,6 +15,9 @@ import { Rent } from 'src/app/models/rentModel';
 import { ToastrService } from 'ngx-toastr';
 import { Payment } from 'src/app/models/payment';
 import { PaymentService } from 'src/app/services/paymentService/payment.service';
+import { Claims } from 'src/app/models/claims';
+import { AuthService } from 'src/app/services/authService/auth.service';
+import { RentalDetails } from 'src/app/models/rentalDetails';
 
 const today = new Date();
 const month = today.getMonth();
@@ -26,113 +29,40 @@ const year = today.getFullYear();
   styleUrls: ['./rental.component.css'],
 })
 export class RentalComponent implements OnInit {
-  rentals: Rental[] = [];
+  rentals: RentalDetails[] = [];
   dataLoaded: boolean = false;
-  car: Car;
-  carId: number;
-  carImages: CarImage[] = [];
-  returnDate:Date = null;
-  paymentForm:FormGroup;
-
-
-  campaignOne: FormGroup;
-
+  claims:Claims | undefined = {email:"",fullName:"",roles:[""],userId:0};
   constructor(
-    private activatedRoute: ActivatedRoute,
     private rentalService: RentalService,
-    private carService: CarService,
-    private formBuilder: FormBuilder,
-    private toastrService: ToastrService,
-    private router: Router,
-    private paymentService:PaymentService
+    private authService:AuthService
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      if (params['carId']) {
-        this.carId = params['carId'];
-        this.getCarDetailsByCarId(params['carId']);
-        this.getCarImagesByCarId(params['carId']);
-
-      }
-    });
-    this.datePicker();
-    this.createPaymentForm();
+    this.getClaims();
+    this.getRentals();
   }
 
-  getRentals() {
-    this.rentalService.getRentals().subscribe((response) => {
-      this.rentals = response.data;
+  getClaims(){
+    if(this.authService.isAuthenticated()){
+      let claims:Claims | undefined = this.authService.getClaims();
+      this.claims = claims;
+    }
+  }
+
+
+  getRentals(){
+    this.rentalService.getRentalsByUserId(this.claims.userId).subscribe(response =>{
+      this.rentals = response.data
       this.dataLoaded = true;
-    });
+      // this.checkRentals();
+    })
   }
 
-  getCarDetailsByCarId(carId: number) {
-    this.carService.getCarDetailsByCarId(carId).subscribe((response) => {
-      this.car = response.data;
-    });
-  }
-
-  getCarImagesByCarId(carId: number) {
-    this.carService.getCarImagesByCarId(carId).subscribe((response) => {
-      this.carImages = response.data;
-    });
-  }
-
-  datePicker() {
-    this.campaignOne = this.formBuilder.group({
-      rentDate: [new Date(year, month, today.getDate()), Validators.required],
-      returnDate: [this.returnDate],
-      customerId: [1, Validators.required],
-      carId: [this.carId, Validators.required],
-    });
-  }
-
-
-  rentACar() {
-    if (this.campaignOne.valid) {
-      console.log(this.campaignOne.value)
-      let rent: Rent = Object.assign({}, this.campaignOne.value);
-      this.rentalService.addRental(rent).subscribe(
-        (response) => {
-
-        },
-        (responseError) => {
-          this.toastrService.error(responseError.error.message);
-        }
-      );
-    }
-  }
-
-
-
-  createPaymentForm() {
-    this.paymentForm = this.formBuilder.group({
-      cardName: ['',Validators.required],
-      cardNumber: ['',Validators.required],
-      expirationDate: ['',Validators.required],
-      securityCode: ['',Validators.required]
-    });
-  }
-
-  payment(){
-    if (this.paymentForm.valid){
-      let payment:Payment = Object.assign({},this.paymentForm.value);
-      this.paymentService.add(payment).subscribe( (response) => {
-        this.toastrService.success(response.message,"Araç Başarıyla Kiralandı");
-        this.rentACar();
-        
-      },
-      (responseError)=> {
-        this.toastrService.error(responseError.error.message);
-      }
-      )
-    }
-  }
-
-
-
-
-
+  // checkRentals(){
+  //   if(this.rentals.length < 1){
+  //     let element = document.querySelector(".rentals");
+  //     element.innerHTML = "You dont have any rentals yet"
+  //   }
+  // }
 
 }
