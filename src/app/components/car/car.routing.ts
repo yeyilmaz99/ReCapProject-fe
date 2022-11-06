@@ -12,5 +12,6 @@ export const CarRoutes:Routes = [
     {path:  "car/:carId", component:CarDetailComponent},
     {path:  "settings", component:CarAddComponent},
     {path: "", pathMatch:"full", component:CarsComponent},
+    {path: "brand/:brandId", component:CarsComponent},
     {path:  "car/:carId/rental", component:RentalComponent, canActivate:[LoginGuard]},
 ]
