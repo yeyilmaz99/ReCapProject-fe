@@ -13,7 +13,7 @@
             </div>
           </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-0 favorites">
-          <div class="card shadow-sm" *ngFor="let rental of rentals" routerLink="/cars/car/{{ rental.carId }}">
+          <div class="card shadow-sm" *ngFor="let rental of rentals" >
             <svg
               class="bd-placeholder-img card-img-top"
               width="100%"
@@ -38,7 +38,7 @@
                   <button
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
-                  >
+                    routerLink="/cars/car/{{ rental.carId }}">
                     View
                   </button>
                 </div>
