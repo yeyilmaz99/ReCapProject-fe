@@ -25,6 +25,7 @@ export class CarsComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 25, 100];
   dataLoaded: boolean = false;
   carFilterForm: FormGroup;
+  brandId:number = 0;
 
   constructor(
     private carService: CarService,
@@ -35,11 +36,18 @@ export class CarsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-    this.getCars();
     this.getColors();
     this.getBrands();
     this.createCarFilterForm();
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['brandId']) {
+        this.brandId = params['brandId'];
+        this.getCarsByBrand(params['brandId']);
+        console.log(this.brandId);
+      }else{
+        this.getCars();
+      }
+    });
   }
 
   getCars() {
