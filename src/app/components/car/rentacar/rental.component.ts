@@ -4,9 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
+import { Claims } from 'src/app/models/claims';
 import { Payment } from 'src/app/models/payment';
 import { Rental } from 'src/app/models/rental';
 import { Rent } from 'src/app/models/rentModel';
+import { AuthService } from 'src/app/services/authService/auth.service';
 import { CarService } from 'src/app/services/carService/car.service';
 import { PaymentService } from 'src/app/services/paymentService/payment.service';
 import { RentalService } from 'src/app/services/rentalService/rental.service';
@@ -29,6 +31,7 @@ export class RentalComponent implements OnInit {
   carImages: CarImage[] = [];
   returnDate:Date = null;
   paymentForm:FormGroup;
+  claims:Claims | undefined = {email:"",fullName:"",roles:[""],userId:0};
 
 
   campaignOne: FormGroup;
@@ -40,7 +43,8 @@ export class RentalComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
     private router: Router,
-    private paymentService:PaymentService
+    private paymentService:PaymentService,
+    private authService:AuthService
   ) {}
 
   ngOnInit(): void {
@@ -54,6 +58,14 @@ export class RentalComponent implements OnInit {
     });
     this.datePicker();
     this.createPaymentForm();
+    this.getClaims();
+  }
+
+  getClaims(){
+    if(this.authService.isAuthenticated()){
+      let claims:Claims | undefined = this.authService.getClaims();
+      this.claims = claims;
+    }
   }
 
   getRentals() {
@@ -79,7 +91,6 @@ export class RentalComponent implements OnInit {
     this.campaignOne = this.formBuilder.group({
       rentDate: [new Date(year, month, today.getDate()), Validators.required],
       returnDate: [this.returnDate],
-      customerId: [1, Validators.required],
       carId: [this.carId, Validators.required],
     });
   }
@@ -89,6 +100,7 @@ export class RentalComponent implements OnInit {
     if (this.campaignOne.valid) {
       console.log(this.campaignOne.value)
       let rent: Rent = Object.assign({}, this.campaignOne.value);
+      rent.userId = this.claims.userId;
       this.rentalService.addRental(rent).subscribe(
         (response) => {
 
