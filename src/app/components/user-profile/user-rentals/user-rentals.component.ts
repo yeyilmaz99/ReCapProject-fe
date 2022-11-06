@@ -21,7 +21,7 @@ export class UserRentalsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getClaims();
-    this.getRentals();
+    this.getRecentRentals();
   }
 
   getClaims(){
@@ -31,8 +31,16 @@ export class UserRentalsComponent implements OnInit {
     }
   }
 
-  getRentals(){
-    this.rentalService.getRentalsByUserId(this.claims.userId).subscribe(response =>{
+  // getRentals(){
+  //   this.rentalService.getRentalsByUserId(this.claims.userId).subscribe(response =>{
+  //     this.rentals = response.data
+  //     this.dataLoaded = true;
+  //     this.checkRentals();
+  //   })
+  // }
+
+  getRecentRentals(){
+    this.rentalService.getRecentRentalsByUserId(this.claims.userId).subscribe(response=>{
       this.rentals = response.data
       this.dataLoaded = true;
       this.checkRentals();
