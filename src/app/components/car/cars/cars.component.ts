@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { Color } from 'src/app/models/color';
 import { FilterModel } from 'src/app/models/filterModel';
+import { OrderByPipe } from 'src/app/pipes/order-by.pipe';
 import { BrandService } from 'src/app/services/brandService/brand.service';
 import { CarService } from 'src/app/services/carService/car.service';
 import { ColorService } from 'src/app/services/colorService/color.service';
@@ -32,7 +34,9 @@ export class CarsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private colorService: ColorService,
     private brandService: BrandService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastrService:ToastrService,
+    private orderByPipe:OrderByPipe
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +47,6 @@ export class CarsComponent implements OnInit {
       if (params['brandId']) {
         this.brandId = params['brandId'];
         this.getCarsByBrand(params['brandId']);
-        console.log(this.brandId);
       }else{
         this.getCars();
       }
@@ -72,6 +75,10 @@ export class CarsComponent implements OnInit {
   getCarsByBrand(brandId: number) {
     this.carService.getCarsByBrand(brandId).subscribe((response) => {
       this.cars = response.data;
+      if(this.cars.length == 0){
+        this.getCars();
+        this.toastrService.error("There are no cars in this brand yet");
+      }
       this.dataLoaded = true;
     });
   }
@@ -111,6 +118,13 @@ export class CarsComponent implements OnInit {
     }
   }
 
-
-
+  sortAll(){
+    this.cars = this.orderByPipe.transform(this.cars, 'carId', 'asc')
+  }
+  sortLow(){
+    this.cars = this.orderByPipe.transform(this.cars, 'dailyPrice', 'asc')
+  }
+  sortHigh(){
+    this.cars = this.orderByPipe.transform(this.cars, 'dailyPrice', 'desc')
+  }
 }
