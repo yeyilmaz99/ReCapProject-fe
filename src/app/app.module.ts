@@ -15,10 +15,6 @@ import { JwtModule } from '@auth0/angular-jwt';
 
 
 
-
-
-
-
 import { AppComponent } from './app.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { ColorComponent } from './components/color/color.component';
@@ -39,6 +35,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { UserComponentsModule } from './components/user-profile/components/user-components.module';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { BrandsComponent } from './components/brand/brands/brands.component';
+import { OrderByPipe } from './pipes/order-by.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -62,7 +60,9 @@ export function tokenGetter() {
     RegisterComponent,
     UserProfileComponent,
     AdminComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    BrandsComponent,
+    OrderByPipe,
   ],
   imports: [
     BrowserModule,
