@@ -19,8 +19,6 @@ import { BrandsComponent } from './brands/brands.component';
   ],
   declarations: [
     BrandAddComponent,
-    BrandsComponent,
-
   ]
 })
 
