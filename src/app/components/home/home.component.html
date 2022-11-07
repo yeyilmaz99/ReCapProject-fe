@@ -7,11 +7,13 @@
         <div class="caption">
           <h2>Welcome to Rent A Car</h2>
           <div class="line-dec"></div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos esse itaque illum nulla dolor, nam saepe id maiores voluptatum repellendus sint. Officia ab repellendus provident?
-            <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, deserunt sint? Eum necessitatibus reiciendis dolorum.
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos esse itaque illum nulla dolor, nam saepe id
+            maiores voluptatum repellendus sint. Officia ab repellendus provident?
+            <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, deserunt sint? Eum
+            necessitatibus reiciendis dolorum.
           </p>
           <div class="main-button">
-            <a [routerLink]="['/cars']" >Rent Now!</a>
+            <a [routerLink]="['/cars']">Rent Now!</a>
           </div>
         </div>
       </div>
@@ -28,28 +30,19 @@
         <div class="section-heading">
           <div class="line-dec"></div>
           <h1>Featured Brands</h1>
-          <div class="container">
-            <div class="row justify-content-center">
-                <div class="card mt-4" *ngFor="let brand of brands" style="width: 18rem;">
-                    <img src="assets/images/DefaultImage.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h2 class="card-title">{{brand.brandName}}</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
+          <app-brands></app-brands>
         </div>
       </div>
     </div>
   </div>
-
 </div>
-  <div class="container-fluid">
-    
-  </div>
+
 
 
 <!-- Featred Ends Here -->
+
+
+
 
 
 <!-- Subscribe Form Starts Here -->
