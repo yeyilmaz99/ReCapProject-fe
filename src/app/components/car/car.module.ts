@@ -10,6 +10,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RentalComponent } from './rentacar/rental.component';
+import { OrderByPipe } from 'src/app/pipes/order-by.pipe';
 
 
 
