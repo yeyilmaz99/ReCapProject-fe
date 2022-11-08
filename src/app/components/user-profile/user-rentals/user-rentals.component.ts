@@ -31,14 +31,6 @@ export class UserRentalsComponent implements OnInit {
     }
   }
 
-  // getRentals(){
-  //   this.rentalService.getRentalsByUserId(this.claims.userId).subscribe(response =>{
-  //     this.rentals = response.data
-  //     this.dataLoaded = true;
-  //     this.checkRentals();
-  //   })
-  // }
-
   getRecentRentals(){
     this.rentalService.getRecentRentalsByUserId(this.claims.userId).subscribe(response=>{
       this.rentals = response.data
