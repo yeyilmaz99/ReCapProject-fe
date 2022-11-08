@@ -13,6 +13,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class AdminCarListComponent implements OnInit {
   cars:Car[] = [];
   dataLoaded:boolean = false;
+  carToDelete:CarDelete = {id:0,brandId:0,carName:'',colorId:0,dailyPrice:0,description:'',modelYear:0}
   constructor(
     private carService:CarService,
     private toastrService:ToastrService
@@ -46,8 +47,8 @@ export class AdminCarListComponent implements OnInit {
           'Your file has been deleted.',
           'success'
         )
-        let carToDelete: CarDelete = {id:carToDeleteId,brandId:0,carName:'',colorId:0,dailyPrice:0,description:'',modelYear:0}
-        this.carService.deleteCar(carToDelete).subscribe(response => {
+        this.carToDelete.id = carToDeleteId;
+        this.carService.deleteCar(this.carToDelete).subscribe(response => {
           this.toastrService.warning(response.message)
           this.getCars();
         })
