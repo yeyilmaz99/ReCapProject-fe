@@ -12,6 +12,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class AdminBrandListComponent implements OnInit {
   brands:Brand[] = [];
   dataLoaded:boolean = false;
+  brandToDelete:Brand = {brandId:0, brandName:''};
   constructor(
     private brandService:BrandService,
     private toastrService:ToastrService,
@@ -27,7 +28,6 @@ export class AdminBrandListComponent implements OnInit {
     this.brandService.getBrands().subscribe(response =>{
       this.brands = response.data;
       this.dataLoaded = true;
-      console.log('hello')
     })
   }
 
@@ -47,8 +47,8 @@ export class AdminBrandListComponent implements OnInit {
           'Your file has been deleted.',
           'success'
         )
-        let brandToDelete:Brand = {brandId:id, brandName:''};
-        this.brandService.deleteBrand(brandToDelete).subscribe(response => {
+        this.brandToDelete.brandId = id;
+        this.brandService.deleteBrand(this.brandToDelete).subscribe(response => {
           this.toastrService.warning(response.message);
           this.getBrands();
         })
