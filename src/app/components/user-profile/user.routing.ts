@@ -8,5 +8,5 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
 export const UserRoutes:Routes = [
     {path: 'companysettings', component:UserCompanyComponent},
     {path: 'info', component:UserInfoComponent},
-    {path: 'settings', component:UserSettingsComponent},
+    {path: 'settings', component:UserSettingsComponent}
 ]
