@@ -104,7 +104,8 @@ export class RentalComponent implements OnInit {
       rent.userId = this.claims.userId;
       this.rentalService.addRental(rent).subscribe(
         (response) => {
-
+          Swal.fire(response.message,'','success');
+          this.router.navigate(['/user/rentals'])
         },
         (responseError) => {
           this.toastrService.error(responseError.error.message);
@@ -113,6 +114,9 @@ export class RentalComponent implements OnInit {
     }
   }
 
+  asdf(){
+   
+  }
 
 
   createPaymentForm() {
@@ -128,7 +132,7 @@ export class RentalComponent implements OnInit {
     if (this.paymentForm.valid){
       let payment:Payment = Object.assign({},this.paymentForm.value);
       this.paymentService.add(payment).subscribe( (response) => {
-        this.toastrService.success(response.message,"Payment Successful");
+        this.toastrService.success("Payment Successful");
         this.rentACar();
         
       },
