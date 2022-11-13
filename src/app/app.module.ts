@@ -37,6 +37,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { BrandsComponent } from './components/brand/brands/brands.component';
 import { OrderByPipe } from './pipes/order-by.pipe';
+import { PostPaymentComponent } from './components/post-payment/post-payment.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -63,6 +64,7 @@ export function tokenGetter() {
     FavoritesComponent,
     BrandsComponent,
     OrderByPipe,
+    PostPaymentComponent,
   ],
   imports: [
     BrowserModule,
