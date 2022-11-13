@@ -54,6 +54,11 @@ export class RentalComponent implements OnInit {
         this.carId = params['carId'];
         this.getCarDetailsByCarId(params['carId']);
         this.getCarImagesByCarId(params['carId']);
+        this.rentalService.checkIfCarIsReturned(params['carId']).subscribe(response =>{
+        },responseError=>{
+          this.toastrService.error(responseError.error.message)
+          this.router.navigate(['/cars']);
+        })
 
       }
     });
@@ -99,7 +104,6 @@ export class RentalComponent implements OnInit {
 
   rentACar() {
     if (this.campaignOne.valid) {
-      console.log(this.campaignOne.value)
       let rent: Rent = Object.assign({}, this.campaignOne.value);
       rent.userId = this.claims.userId;
       this.rentalService.addRental(rent).subscribe(
