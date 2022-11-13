@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/authService/auth.service';
 import { CarService } from 'src/app/services/carService/car.service';
 import { PaymentService } from 'src/app/services/paymentService/payment.service';
 import { RentalService } from 'src/app/services/rentalService/rental.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';  
 
 
 const today = new Date();
@@ -127,7 +128,7 @@ export class RentalComponent implements OnInit {
     if (this.paymentForm.valid){
       let payment:Payment = Object.assign({},this.paymentForm.value);
       this.paymentService.add(payment).subscribe( (response) => {
-        this.toastrService.success(response.message,"Araç Başarıyla Kiralandı");
+        this.toastrService.success(response.message,"Payment Successful");
         this.rentACar();
         
       },
