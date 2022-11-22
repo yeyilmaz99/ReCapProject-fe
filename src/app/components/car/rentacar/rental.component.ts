@@ -118,10 +118,6 @@ export class RentalComponent implements OnInit {
     }
   }
 
-  asdf(){
-   
-  }
-
 
   createPaymentForm() {
     this.paymentForm = this.formBuilder.group({
