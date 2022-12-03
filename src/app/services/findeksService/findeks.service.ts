@@ -21,7 +21,7 @@ export class FindeksService {
 
   getByUserId(userId:number):Observable<SingleResponseModel<Findeks>>{
     let newPath = this.apiUrl + "getByUserId?userId=";
-    return this.httpClient.get<SingleResponseModel<Findeks>>(newPath + userId)
+    return this.httpClient.get<SingleResponseModel<Findeks>>(newPath + userId);
   }
 
 }
