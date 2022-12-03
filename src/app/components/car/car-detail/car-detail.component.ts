@@ -16,6 +16,7 @@ import { BrandService } from 'src/app/services/brandService/brand.service';
 import { CarService } from 'src/app/services/carService/car.service';
 import { ColorService } from 'src/app/services/colorService/color.service';
 import { FavoriteService } from 'src/app/services/favoriteService/favorite.service';
+import { FindeksService } from 'src/app/services/findeksService/findeks.service';
 import { RentalService } from 'src/app/services/rentalService/rental.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';  
 
@@ -25,6 +26,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./car-detail.component.css'],
 })
 export class CarDetailComponent implements OnInit {
+  findeksPoint:number = 0;
   car: Car;
   carImages: CarImage[] = [];
   brands:Brand[];
@@ -45,7 +47,8 @@ export class CarDetailComponent implements OnInit {
     private colorService:ColorService,
     private formBuilder:FormBuilder,
     private authService:AuthService,
-    private favoriteService:FavoriteService
+    private favoriteService:FavoriteService,
+    private findeksService:FindeksService
   ) {}
 
   ngOnInit(): void {
@@ -194,6 +197,15 @@ export class CarDetailComponent implements OnInit {
     this.checkIfAlreadyAddedToFav = true;
 
 
+  }
+
+  getFindeksPoint(){
+    this.findeksService.getByUserId(this.claims.userId).subscribe(response => {
+      response.data.findeksPoint = this.findeksPoint; 
+      console.log(this.findeksPoint);
+    },responseError =>{
+      this.toastrService.error("the server is unreachable");
+    });
   }
 
 
