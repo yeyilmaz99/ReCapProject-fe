@@ -26,7 +26,6 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./car-detail.component.css'],
 })
 export class CarDetailComponent implements OnInit {
-  findeksPoint:number = 0;
   car: Car;
   carImages: CarImage[] = [];
   brands:Brand[];
@@ -65,6 +64,7 @@ export class CarDetailComponent implements OnInit {
     this.checkIfCarIsReturned();
     this.getClaims();
     this.checkIfAlreadyAddedToFavs();
+    this.getFindeksPoint();
   }
 
   getCarDetailsByCarId(carId: number) {
@@ -201,13 +201,15 @@ export class CarDetailComponent implements OnInit {
 
   getFindeksPoint(){
     this.findeksService.getByUserId(this.claims.userId).subscribe(response => {
-      response.data.findeksPoint = this.findeksPoint; 
-      console.log(this.findeksPoint);
+      let findeksPoint;
+      findeksPoint = response.data.findeksPoint;
+      console.log(findeksPoint);
     },responseError =>{
       this.toastrService.error("the server is unreachable");
     });
   }
 
+  
 
 
 
