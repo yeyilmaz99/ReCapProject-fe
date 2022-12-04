@@ -56,6 +56,7 @@ export class CarDetailComponent implements OnInit {
         this.carId = params['carId'];
         this.getCarDetailsByCarId(params['carId']);
         this.getCarImagesByCarId(params['carId']);
+        this.getFindeksPoint(params['carId']);
       }
     });
     this.getBrands();
@@ -64,7 +65,6 @@ export class CarDetailComponent implements OnInit {
     this.checkIfCarIsReturned();
     this.getClaims();
     this.checkIfAlreadyAddedToFavs();
-    this.getFindeksPoint();
   }
 
   getCarDetailsByCarId(carId: number) {
@@ -199,8 +199,8 @@ export class CarDetailComponent implements OnInit {
 
   }
 
-  getFindeksPoint(){
-    this.findeksService.getByUserId(this.claims.userId).subscribe(response => {
+  getFindeksPoint(carId:number){
+    this.findeksService.getCarFindeksById(carId).subscribe(response => {
       let findeksPoint;
       findeksPoint = response.data.findeksPoint;
       console.log(findeksPoint);
@@ -209,7 +209,7 @@ export class CarDetailComponent implements OnInit {
     });
   }
 
-  
+
 
 
 
