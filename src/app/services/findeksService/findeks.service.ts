@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CarFindeks } from 'src/app/models/carFindeks';
 import { Findeks } from 'src/app/models/findeks';
 import { ListResponseModel } from 'src/app/models/listResponseModel';
+import { ResponseModel } from 'src/app/models/responseModel';
 import { SingleResponseModel } from 'src/app/models/singleResponseModel';
 
 @Injectable({
@@ -35,8 +36,8 @@ export class FindeksService {
     return this.httpClient.get<SingleResponseModel<CarFindeks>>(newPath + carId);
   }
 
-  checkIfFindeksSufficient(){
-
+  checkIfFindeksSufficient(carFP:number, userId:number):Observable<ResponseModel>{
+    return this.httpClient.get<ResponseModel>(this.apiUrl + "Findeks/checkIfSufficient?carFP="+ carFP + "&userId=" + userId)
   }
 
 
