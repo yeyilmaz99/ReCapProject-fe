@@ -30,9 +30,13 @@ export class FindeksService {
     return this.httpClient.get<ListResponseModel<CarFindeks>>(newPath);
   }
 
-  getCarFindeksById(carId:number){
+  getCarFindeksById(carId:number):Observable<SingleResponseModel<CarFindeks>>{
     let newPath = this.apiUrl + "CarFindeks/getbyid?carId=";
     return this.httpClient.get<SingleResponseModel<CarFindeks>>(newPath + carId);
+  }
+
+  checkIfFindeksSufficient(){
+
   }
 
 
