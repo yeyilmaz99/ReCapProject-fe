@@ -203,6 +203,8 @@ export class CarDetailComponent implements OnInit {
       this.findeksPoint = response.data.findeksPoint;
       this.findeksService.checkIfFindeksSufficient(this.findeksPoint,this.claims.userId).subscribe(response => {
         this.toastrService.show(response.message);
+      },responseError =>{
+        console.log(responseError.error.success)
       })
     },responseError =>{
       this.toastrService.error("the server is unreachable");
