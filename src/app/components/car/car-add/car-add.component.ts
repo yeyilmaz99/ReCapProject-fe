@@ -8,10 +8,12 @@ import {
 import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
+import { CarFindeks } from 'src/app/models/carFindeks';
 import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brandService/brand.service';
 import { CarService } from 'src/app/services/carService/car.service';
 import { ColorService } from 'src/app/services/colorService/color.service';
+import { FindeksService } from 'src/app/services/findeksService/findeks.service';
 
 @Component({
   selector: 'app-car-add',
@@ -22,12 +24,14 @@ export class CarAddComponent implements OnInit {
   brands: Brand[];
   colors: Color[];
   carAddForm: FormGroup;
+  carFindeks:CarFindeks;
   constructor(
     private brandService: BrandService,
     private colorService: ColorService,
     private formBuilder: FormBuilder,
     private carService:CarService,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private findeksService:FindeksService,
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +60,7 @@ export class CarAddComponent implements OnInit {
       modelYear: ['', Validators.required],
       dailyPrice: ['', Validators.required],
       description: ['', Validators.required],
+      findeksPoint: ['', Validators.required]
     });
   }
 
@@ -67,7 +72,6 @@ export class CarAddComponent implements OnInit {
       },responseError => {
         this.toastrService.error(responseError.error)
       })
-      
     }
   }
 }
