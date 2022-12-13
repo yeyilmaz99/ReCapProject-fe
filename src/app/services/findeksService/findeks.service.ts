@@ -47,7 +47,5 @@ export class FindeksService {
   updateFindeks(carFindeks:CarFindeks):Observable<ResponseModel>{
     return this.httpClient.patch<ResponseModel>(this.apiUrl+"CarFindeks/update",carFindeks);
   }
-
-
-
+  
 }
