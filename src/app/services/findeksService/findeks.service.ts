@@ -44,8 +44,6 @@ export class FindeksService {
 
   }
 
-  updateFindeks(findeks:Findeks){
 
-  }
 
 }
