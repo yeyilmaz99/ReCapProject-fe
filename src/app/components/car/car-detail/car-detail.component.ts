@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { CarDelete } from 'src/app/models/carDelete';
+import { CarFindeks } from 'src/app/models/carFindeks';
 import { CarImage } from 'src/app/models/carImage';
 import { Claims } from 'src/app/models/claims';
 import { Color } from 'src/app/models/color';
@@ -24,6 +25,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./car-detail.component.css'],
 })
 export class CarDetailComponent implements OnInit {
+  carFindeks:number;
   findeksPoint:number;
   car: Car;
   carImages: CarImage[] = [];
@@ -55,7 +57,6 @@ export class CarDetailComponent implements OnInit {
         this.carId = params['carId'];
         this.getCarDetailsByCarId(params['carId']);
         this.getCarImagesByCarId(params['carId']);
-        this.getFindeksPoint(params['carId']);
       }
     });
     this.getBrands();
@@ -69,6 +70,8 @@ export class CarDetailComponent implements OnInit {
   getCarDetailsByCarId(carId: number) {
     this.carService.getCarDetailsByCarId(carId).subscribe((response) => {
       this.car = response.data;
+      this.carFindeks = response.data.findeksPoint;
+      this.getFindeksPoint();
     });
   }
 
@@ -107,7 +110,8 @@ export class CarDetailComponent implements OnInit {
       brandId: ["",Validators.required],
       modelYear: ["",Validators.required],
       dailyPrice: ["", Validators.required],
-      description: ["",Validators.required]
+      description: ["",Validators.required],
+      findeksPoint: ["",Validators.required],
     })
   }
   update(){
@@ -198,18 +202,12 @@ export class CarDetailComponent implements OnInit {
 
   }
 
-  getFindeksPoint(carId:number){
-    this.findeksService.getCarFindeksById(carId).subscribe(response => {
-      this.findeksPoint = response.data.findeksPoint;
-      this.findeksService.checkIfFindeksSufficient(this.findeksPoint,this.claims.userId).subscribe(response => {
+  getFindeksPoint(){
+    console.log(this.carFindeks, this.claims.userId);
+      this.findeksService.checkIfFindeksSufficient(this.car.findeksPoint,this.claims.userId).subscribe(response => {
         this.toastrService.show(response.message);
       },responseError =>{
         console.log(responseError.error.success)
       })
-    },responseError =>{
-      this.toastrService.error("the server is unreachable");
-    });
   }
-
-
 }
