@@ -40,6 +40,12 @@ export class FindeksService {
     return this.httpClient.get<ResponseModel>(this.apiUrl + "Findeks/checkIfSufficient?carFP="+ carFP + "&userId=" + userId)
   }
 
+  addFindeks(findeks:Findeks){
 
+  }
+
+  updateFindeks(findeks:Findeks){
+
+  }
 
 }
