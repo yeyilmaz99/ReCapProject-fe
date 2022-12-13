@@ -4,4 +4,5 @@ export interface Car {
   brandName: string;
   colorName:string;
   dailyPrice:string;
+  findeksPoint:number;
 }
