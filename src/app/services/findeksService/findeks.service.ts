@@ -41,11 +41,13 @@ export class FindeksService {
   }
 
   addFindeks(carFindeks:CarFindeks):Observable<ResponseModel>{
+    console.log(carFindeks);
     return this.httpClient.post<ResponseModel>(this.apiUrl+"CarFindeks/add",carFindeks);
   }
 
   updateFindeks(carFindeks:CarFindeks):Observable<ResponseModel>{
+    console.log(carFindeks);
     return this.httpClient.patch<ResponseModel>(this.apiUrl+"CarFindeks/update",carFindeks);
   }
-  
+
 }
