@@ -16,7 +16,7 @@ import { ColorService } from 'src/app/services/colorService/color.service';
 import { FavoriteService } from 'src/app/services/favoriteService/favorite.service';
 import { FindeksService } from 'src/app/services/findeksService/findeks.service';
 import { RentalService } from 'src/app/services/rentalService/rental.service';
-import Swal from 'sweetalert2/dist/sweetalert2.js';  
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-car-detail',
@@ -210,14 +210,6 @@ export class CarDetailComponent implements OnInit {
       this.toastrService.error("the server is unreachable");
     });
   }
-
-
-
-
-
-
-
-
 
 
 }
