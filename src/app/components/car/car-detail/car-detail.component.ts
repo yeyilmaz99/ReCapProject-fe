@@ -208,6 +208,26 @@ export class CarDetailComponent implements OnInit {
         this.toastrService.show(response.message);
       },responseError =>{
         console.log(responseError.error.success)
+        if(!responseError.error.success){
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You Dont have enough Findeks Point. Do you still want to rent this car with insurance for 250$ extra?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes!'
+          }).then((result) => {
+            if (result.isDismissed) {
+              Swal.fire(
+                'OK!',
+                'Please select another car.',
+                'error'
+              )
+              this.router.navigate(['cars'])
+            }
+          })
+        }
       })
   }
 }
