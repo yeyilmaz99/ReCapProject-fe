@@ -14,6 +14,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
 
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AdminGuard } from './guards/admin.guard';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
@@ -50,7 +51,7 @@ const routes: Routes = [
       path: '',
       loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)
     }],
-    canActivate:[LoginGuard]
+    canActivate:[AdminGuard]
   },
   {path:'user',redirectTo:'user/info',pathMatch:'full'},
   {
