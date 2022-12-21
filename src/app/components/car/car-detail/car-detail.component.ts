@@ -191,13 +191,34 @@ export class CarDetailComponent implements OnInit {
   }
 
   deleteFromFavorites(){
-    let favoriteToDelete:Favorite = {brandName:"",carName:"",carId:this.carId,colorName:"",dailyPrice:0,description:"",userId:this.claims.userId,userName:""}
-    this.favoriteService.deleteFromFavorites(favoriteToDelete).subscribe(response=>{
-      this.toastrService.error(response.message,"Deleted From Favorites")
-    },responseError=>{
-      this.toastrService.error(responseError.error.message);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+        let favoriteToDelete:Favorite = {brandName:"",carName:"",carId:this.carId,colorName:"",dailyPrice:0,description:"",userId:this.claims.userId,userName:""}
+        this.favoriteService.deleteFromFavorites(favoriteToDelete).subscribe(response=>{
+          this.toastrService.error(response.message,"Deleted From Favorites")
+        },responseError=>{
+          this.toastrService.error(responseError.error.message);
+        })
+        this.checkIfAlreadyAddedToFav = true;
+      }
     })
-    this.checkIfAlreadyAddedToFav = true;
+
+
+
+
 
 
   }
