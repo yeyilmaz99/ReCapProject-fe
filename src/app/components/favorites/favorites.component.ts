@@ -4,6 +4,7 @@ import { Claims } from 'src/app/models/claims';
 import { Favorite } from 'src/app/models/favorite';
 import { AuthService } from 'src/app/services/authService/auth.service';
 import { FavoriteService } from 'src/app/services/favoriteService/favorite.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-favorites',
@@ -30,6 +31,7 @@ export class FavoritesComponent implements OnInit {
 
   getFavoritesByUserId(){
     this.favoriteService.getFavorites(this.claims.userId).subscribe(response => {
+      console.log("hello")
       this.favorites = response.data;
       this.dataLoaded = true;
       this.checkFavorites();
@@ -44,13 +46,35 @@ export class FavoritesComponent implements OnInit {
   }
 
   deleteFromFavorites(carId:number){
-    let favoriteToDelete:Favorite = {brandName:"",carName:"",carId:carId,colorName:"",dailyPrice:0,description:"",userId:this.claims.userId,userName:""}
-    this.favoriteService.deleteFromFavorites(favoriteToDelete).subscribe(response=>{
-      this.toastrService.error(response.message,"Deleted From Favorites")
-    },responseError=>{
-      this.toastrService.error(responseError.error.message);
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "Do you really want to remove this car from favorites?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, remove it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Removed from your favorites',
+          'success'
+        )
+        let favoriteToDelete:Favorite = {brandName:"",carName:"",carId:carId,colorName:"",dailyPrice:0,description:"",userId:this.claims.userId,userName:""}
+        this.favoriteService.deleteFromFavorites(favoriteToDelete).subscribe(response=>{
+          this.toastrService.error(response.message,"Deleted From Favorites")
+          this.getFavoritesByUserId();
+        },responseError=>{
+          this.toastrService.error(responseError.error.message);
+        })
+      }
+
     })
-    this.getFavoritesByUserId();
+
+
+
   }
 
 
