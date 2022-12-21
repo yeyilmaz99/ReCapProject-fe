@@ -224,11 +224,9 @@ export class CarDetailComponent implements OnInit {
   }
 
   getFindeksPoint(){
-    console.log(this.carFindeks, this.claims.userId);
       this.findeksService.checkIfFindeksSufficient(this.car.findeksPoint,this.claims.userId).subscribe(response => {
         this.toastrService.show(response.message);
       },responseError =>{
-        console.log(responseError.error.success)
         if(!responseError.error.success){
           Swal.fire({
             title: 'Are you sure?',
