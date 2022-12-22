@@ -114,7 +114,7 @@ export class RentalComponent implements OnInit {
       this.rentalService.addRental(rent).subscribe(
         (response) => {
           Swal.fire(response.message,'','success');
-          // this.checkIfAlreadyExists();
+          this.checkIfAlreadyExists();
           this.router.navigate(['/user/rentals'])
         },
         (responseError) => {
@@ -159,6 +159,15 @@ export class RentalComponent implements OnInit {
 
 
 
+  checkIfAlreadyExists(){
+    this.findeksService.checkIfAlreadyExists(this.claims.userId).subscribe(response => {
+      console.log(response.success);
+      // this.updateFindeksPoint();
+    },responseError => {
+      // this.addFindeksPoint();
+      console.log(responseError.error.success);
+    })
+  }
 
 
 
