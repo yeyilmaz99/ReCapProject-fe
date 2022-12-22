@@ -75,7 +75,7 @@ export class RentalComponent implements OnInit {
     if(this.authService.isAuthenticated()){
       let claims:Claims | undefined = this.authService.getClaims();
       this.claims = claims;
-      // this.getUsersFindeksPoint();
+      this.getUsersFindeksPoint();
     }
   }
 
@@ -148,6 +148,16 @@ export class RentalComponent implements OnInit {
       )
     }
   }
+
+  getUsersFindeksPoint(){
+    this.findeksService.getByUserId(this.claims.userId).subscribe(response=>{
+      let findeksPoint:number;
+      findeksPoint = response.data.findeksPoint ;
+      this.userFindeksPoint = findeksPoint;
+    })
+  }
+
+
 
 
 
