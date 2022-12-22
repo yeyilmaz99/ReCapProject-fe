@@ -10,6 +10,7 @@ import { CarImage } from 'src/app/models/carImage';
 import { Claims } from 'src/app/models/claims';
 import { Color } from 'src/app/models/color';
 import { Favorite } from 'src/app/models/favorite';
+import { Findeks } from 'src/app/models/findeks';
 import { AuthService } from 'src/app/services/authService/auth.service';
 import { BrandService } from 'src/app/services/brandService/brand.service';
 import { CarService } from 'src/app/services/carService/car.service';
@@ -26,7 +27,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 export class CarDetailComponent implements OnInit {
   carFindeks:number;
-  findeksPoint:number;
+  userfindeksPoint:number;
   car: Car;
   carImages: CarImage[] = [];
   brands:Brand[];
@@ -65,6 +66,7 @@ export class CarDetailComponent implements OnInit {
     this.checkIfCarIsReturned();
     this.getClaims();
     this.checkIfAlreadyAddedToFavs();
+    // this.checkIfAlreadyExists();
   }
 
   getCarDetailsByCarId(carId: number) {
@@ -164,6 +166,8 @@ export class CarDetailComponent implements OnInit {
     if(this.isLoggedIn()){
       let claims:Claims | undefined = this.authService.getClaims();
       this.claims = claims;
+      this.getUsersFindeksPoint();
+
     }
   }
 
@@ -215,12 +219,6 @@ export class CarDetailComponent implements OnInit {
         this.checkIfAlreadyAddedToFav = true;
       }
     })
-
-
-
-
-
-
   }
 
   getFindeksPoint(){
@@ -249,4 +247,15 @@ export class CarDetailComponent implements OnInit {
         }
       })
   }
+
+  getUsersFindeksPoint(){
+    this.findeksService.getByUserId(this.claims.userId).subscribe(response=>{
+      let findeksPoint:number;
+      findeksPoint = response.data.findeksPoint ;
+      this.userfindeksPoint = findeksPoint;
+    })
+  }
+
+
+
 }
