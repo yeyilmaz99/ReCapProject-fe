@@ -60,5 +60,8 @@ export class FindeksService {
   }
 
 
+  checkIfAlreadyExists(userId:number):Observable<ResponseModel>{
+    return this.httpClient.get<ResponseModel>(this.apiUrl+"Findeks/checkIfAlreadyExists?UserId=" +userId);
+  }
 
 }
