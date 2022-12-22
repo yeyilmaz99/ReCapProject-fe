@@ -5,11 +5,13 @@ import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
 import { Claims } from 'src/app/models/claims';
+import { Findeks } from 'src/app/models/findeks';
 import { Payment } from 'src/app/models/payment';
 import { Rental } from 'src/app/models/rental';
 import { Rent } from 'src/app/models/rentModel';
 import { AuthService } from 'src/app/services/authService/auth.service';
 import { CarService } from 'src/app/services/carService/car.service';
+import { FindeksService } from 'src/app/services/findeksService/findeks.service';
 import { PaymentService } from 'src/app/services/paymentService/payment.service';
 import { RentalService } from 'src/app/services/rentalService/rental.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';  
@@ -25,6 +27,7 @@ const year = today.getFullYear();
   styleUrls: ['./rental.component.css']
 })
 export class RentalComponent implements OnInit {
+  userFindeksPoint:number = 0;
   rentals: Rental[] = [];
   dataLoaded: boolean = false;
   car: Car;
@@ -45,7 +48,8 @@ export class RentalComponent implements OnInit {
     private toastrService: ToastrService,
     private router: Router,
     private paymentService:PaymentService,
-    private authService:AuthService
+    private authService:AuthService,
+    private findeksService:FindeksService
   ) {}
 
   ngOnInit(): void {
@@ -71,6 +75,7 @@ export class RentalComponent implements OnInit {
     if(this.authService.isAuthenticated()){
       let claims:Claims | undefined = this.authService.getClaims();
       this.claims = claims;
+      // this.getUsersFindeksPoint();
     }
   }
 
@@ -109,6 +114,7 @@ export class RentalComponent implements OnInit {
       this.rentalService.addRental(rent).subscribe(
         (response) => {
           Swal.fire(response.message,'','success');
+          // this.checkIfAlreadyExists();
           this.router.navigate(['/user/rentals'])
         },
         (responseError) => {
@@ -142,6 +148,11 @@ export class RentalComponent implements OnInit {
       )
     }
   }
+
+
+
+
+
 
 
 
