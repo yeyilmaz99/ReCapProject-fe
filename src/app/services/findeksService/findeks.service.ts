@@ -40,14 +40,20 @@ export class FindeksService {
     return this.httpClient.get<ResponseModel>(this.apiUrl + "Findeks/checkIfSufficient?carFP="+ carFP + "&userId=" + userId);
   }
 
-  addFindeks(carFindeks:CarFindeks):Observable<ResponseModel>{
+  addCarFindeks(carFindeks:CarFindeks):Observable<ResponseModel>{
     console.log(carFindeks);
     return this.httpClient.post<ResponseModel>(this.apiUrl+"CarFindeks/add",carFindeks);
   }
 
-  updateFindeks(carFindeks:CarFindeks):Observable<ResponseModel>{
+  updateCarFindeks(carFindeks:CarFindeks):Observable<ResponseModel>{
     console.log(carFindeks);
     return this.httpClient.patch<ResponseModel>(this.apiUrl+"CarFindeks/update",carFindeks);
   }
+
+  addFindeks(findeks:Findeks):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"Findeks/add",findeks);
+  }
+
+
 
 }
