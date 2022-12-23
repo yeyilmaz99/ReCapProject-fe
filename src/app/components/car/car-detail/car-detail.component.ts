@@ -66,7 +66,6 @@ export class CarDetailComponent implements OnInit {
     this.checkIfCarIsReturned();
     this.getClaims();
     this.checkIfAlreadyAddedToFavs();
-    // this.checkIfAlreadyExists();
   }
 
   getCarDetailsByCarId(carId: number) {
@@ -223,7 +222,6 @@ export class CarDetailComponent implements OnInit {
 
   getFindeksPoint(){
       this.findeksService.checkIfFindeksSufficient(this.car.findeksPoint,this.claims.userId).subscribe(response => {
-        this.toastrService.show(response.message);
       },responseError =>{
         if(!responseError.error.success){
           Swal.fire({
