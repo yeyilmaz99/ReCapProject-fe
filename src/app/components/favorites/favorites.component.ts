@@ -31,7 +31,6 @@ export class FavoritesComponent implements OnInit {
 
   getFavoritesByUserId(){
     this.favoriteService.getFavorites(this.claims.userId).subscribe(response => {
-      console.log("hello")
       this.favorites = response.data;
       this.dataLoaded = true;
       this.checkFavorites();
