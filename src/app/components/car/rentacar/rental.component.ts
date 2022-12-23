@@ -161,11 +161,9 @@ export class RentalComponent implements OnInit {
 
   checkIfAlreadyExists(){
     this.findeksService.checkIfAlreadyExists(this.claims.userId).subscribe(response => {
-      console.log(response.success);
       this.updateFindeksPoint();
     },responseError => {
       this.addFindeksPoint();
-      console.log(responseError.error.success);
     })
   }
 
