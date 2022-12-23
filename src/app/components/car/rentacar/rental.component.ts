@@ -174,9 +174,9 @@ export class RentalComponent implements OnInit {
     this.getUsersFindeksPoint();
     findeks.findeksPoint = this.userFindeksPoint + 100;
     this.findeksService.updateFindeks(findeks).subscribe(response =>{
-      this.toastrService.success("You got 100 more findeks point", "Nice!")
+      this.toastrService.success("You got 100 more findeks point", "Nice!");
     },responseError =>{
-
+      this.toastrService.error("Failed to update your findeks point");
     })
   }
 
@@ -184,9 +184,9 @@ export class RentalComponent implements OnInit {
     let findeks:Findeks = {userId:this.claims.userId,id:0,findeksPoint:0};
     findeks.findeksPoint = 100;
     this.findeksService.addFindeks(findeks).subscribe(response => {
-      this.toastrService.success("You got 100 findeks point", "Nice!")
+      this.toastrService.success("You got 100 findeks point", "Nice!");
     },responseError => {
-
+      this.toastrService.error("Failed to update your findeks point");
     })
   }
 
