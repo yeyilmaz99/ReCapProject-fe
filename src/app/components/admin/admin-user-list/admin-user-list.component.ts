@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActiveUser } from 'src/app/models/activeUser';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/userService/user.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';  
@@ -9,7 +10,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./admin-user-list.component.css']
 })
 export class AdminUserListComponent implements OnInit {
-  activeUsers:User[] = [];
+  activeUsers:ActiveUser[] = [];
   users:User[] = [];
   dataLoaded:boolean = false;
 
