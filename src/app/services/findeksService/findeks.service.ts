@@ -52,7 +52,7 @@ export class FindeksService {
     return this.httpClient.post<ResponseModel>(this.apiUrl+"Findeks/add",findeks);
   }
 
-  updateFindeks(findeks:Findeks){
+  updateFindeks(findeks:Findeks):Observable<ResponseModel>{
     return this.httpClient.patch<ResponseModel>(this.apiUrl+"Findeks/update",findeks);
   }
 
