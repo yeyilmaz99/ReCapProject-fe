@@ -23,7 +23,7 @@ export class AdminUserListComponent implements OnInit {
 
 
   getUsers(){
-    this.userService.getUsers().subscribe(response => {
+    this.userService.getActiveUsers().subscribe(response => {
       this.users = response.data;
       this.dataLoaded = true;
     })
