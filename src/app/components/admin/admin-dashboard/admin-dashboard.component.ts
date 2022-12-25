@@ -51,7 +51,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   getUsers(){
-    this.userService.getUsers().subscribe(response => {
+    this.userService.getAllUsers().subscribe(response => {
       this.users = response.data;
       this.usersDataLoaded = true;
     })
