@@ -9,11 +9,13 @@ import { Findeks } from 'src/app/models/findeks';
 import { Payment } from 'src/app/models/payment';
 import { Rental } from 'src/app/models/rental';
 import { Rent } from 'src/app/models/rentModel';
+import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/authService/auth.service';
 import { CarService } from 'src/app/services/carService/car.service';
 import { FindeksService } from 'src/app/services/findeksService/findeks.service';
 import { PaymentService } from 'src/app/services/paymentService/payment.service';
 import { RentalService } from 'src/app/services/rentalService/rental.service';
+import { UserService } from 'src/app/services/userService/user.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';  
 
 
@@ -49,7 +51,8 @@ export class RentalComponent implements OnInit {
     private router: Router,
     private paymentService:PaymentService,
     private authService:AuthService,
-    private findeksService:FindeksService
+    private findeksService:FindeksService,
+    private userService:UserService
   ) {}
 
   ngOnInit(): void {
@@ -183,6 +186,12 @@ export class RentalComponent implements OnInit {
     findeks.findeksPoint = 100;
     this.findeksService.addFindeks(findeks).subscribe(response => {
       this.toastrService.success("You got 100 findeks point", "Nice!");
+      let userToUpdate:User = {id:this.claims.userId,firstName:"",lastName:"",email:"",status:true};
+      this.userService.updateUser(userToUpdate).subscribe(response  =>{
+        this.toastrService.success("You're a active user now", "Nice!");
+      },responseError => {
+        this.toastrService.error("Failed to update status");
+      })
     },responseError => {
       this.toastrService.error("Failed to update your findeks point");
     })
