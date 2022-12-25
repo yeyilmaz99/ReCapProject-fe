@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import { ActiveUser } from 'src/app/models/activeUser';
 import { ListResponseModel } from 'src/app/models/listResponseModel';
+import { ResponseModel } from 'src/app/models/responseModel';
 import { User } from 'src/app/models/user';
 
 @Injectable({
@@ -25,6 +26,11 @@ export class UserService {
   getAllUsers():Observable<ListResponseModel<User>>{
     let newPath = this.apiUrl + "getall"
     return this.httpClient.get<ListResponseModel<User>>(newPath);
+  }
+
+  updateUser(user:User):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "update"
+    return this.httpClient.patch<ResponseModel>(newPath, user)
   }
 
 
