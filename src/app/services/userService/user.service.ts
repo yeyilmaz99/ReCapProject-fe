@@ -16,9 +16,16 @@ export class UserService {
   apiUrl = "https://localhost:5001/api/Users/"
 
 
-  getUsers():Observable<ListResponseModel<User>>{
+  getActiveUsers():Observable<ListResponseModel<User>>{
+    let newPath = this.apiUrl + "getallfindeks"
+    return this.httpClient.get<ListResponseModel<User>>(newPath);
+  }
+
+  getAllUsers():Observable<ListResponseModel<User>>{
     let newPath = this.apiUrl + "getall"
     return this.httpClient.get<ListResponseModel<User>>(newPath);
   }
+
+
 
 }
