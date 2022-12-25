@@ -54,15 +54,15 @@ export class RentalComponent implements OnInit {
     this.rentalService.getRentalsByUserId(this.claims.userId).subscribe(response =>{
       this.rentals = response.data
       this.dataLoaded = true;
-      // this.checkRentals();
+      this.checkRentals();
     })
   }
 
-  // checkRentals(){
-  //   if(this.rentals.length < 1){
-  //     let element = document.querySelector(".rentals");
-  //     element.innerHTML = "You dont have any rentals yet"
-  //   }
-  // }
+  checkRentals(){
+    if(this.rentals.length < 1){
+      let element = document.querySelector(".rentals");
+      element.innerHTML = "You dont have any rentals yet"
+    }
+  }
 
 }
