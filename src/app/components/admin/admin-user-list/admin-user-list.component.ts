@@ -9,7 +9,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./admin-user-list.component.css']
 })
 export class AdminUserListComponent implements OnInit {
-
+  activeUsers:User[] = [];
   users:User[] = [];
   dataLoaded:boolean = false;
 
@@ -18,12 +18,21 @@ export class AdminUserListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUsers()
+    this.getActiveUsers();
+    this.getAllUsers();
   }
 
 
-  getUsers(){
+  getActiveUsers(){
     this.userService.getActiveUsers().subscribe(response => {
+      this.activeUsers = response.data;
+      this.dataLoaded = true;
+    })
+  }
+
+
+  getAllUsers(){
+    this.userService.getAllUsers().subscribe(response => {
       this.users = response.data;
       this.dataLoaded = true;
     })
