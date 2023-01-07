@@ -97,16 +97,16 @@
                               </div>
                               <div class="mb-3 form-group">
                                 <label for="creditCardNumber" class="form-label">Kart Numarası</label>
-                                <input type="text" class="form-control" id="cardNumber" formControlName="cardNumber"  aria-describedby="emailHelp">
+                                <input type="number" class="form-control" id="cardNumber" formControlName="cardNumber"  aria-describedby="emailHelp">
                               </div>
                               <div class="row">
                                 <div class="mb-3 col-md-6 form-group">
                                   <label for="expirationDate" class="form-label">Son Kullanma Tarihi</label>
-                                  <input type="text" class="form-control" id="expirationDate" formControlName="expirationDate" aria-describedby="emailHelp">
+                                  <input type="number" class="form-control" id="expirationDate" formControlName="expirationDate" aria-describedby="emailHelp">
                                 </div>
                                 <div class="mb-3 col-md-6 form-group">
                                   <label for="securityCode" class="form-label">Güvenlik Kodu(CVC)</label>
-                                  <input type="text" class="form-control" id="securityCode" formControlName="securityCode" aria-describedby="emailHelp">
+                                  <input type="number" class="form-control" id="securityCode" formControlName="securityCode" aria-describedby="emailHelp">
                                 </div>
                               </div>
                               <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="payment()" >Ödeme</button>

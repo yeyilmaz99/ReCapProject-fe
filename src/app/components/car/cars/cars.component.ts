@@ -18,6 +18,7 @@ import { ColorService } from 'src/app/services/colorService/color.service';
   styleUrls: ['./cars.component.css']
 })
 export class CarsComponent implements OnInit {
+  filterText: string = '';
   cars: Car[] = [];
   length: number = this.cars.length;
   carsSlice: Car[];

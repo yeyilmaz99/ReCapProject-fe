@@ -11,6 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RentalComponent } from './rentacar/rental.component';
 import { OrderByPipe } from 'src/app/pipes/order-by.pipe';
+import { FilterPipe } from 'src/app/pipes/filter.pipe';
 
 
 
@@ -29,7 +30,8 @@ import { OrderByPipe } from 'src/app/pipes/order-by.pipe';
     CarAddComponent,
     CarDetailComponent,
     CarsComponent,
-    RentalComponent
+    RentalComponent,
+    FilterPipe
   ]
 })
 
