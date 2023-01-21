@@ -83,7 +83,7 @@
             </div>
           </div>
           <div class="row row-cols-1 row-cols-md-4 g-4">
-            <div *ngFor="let car of cars | filter: filterText " class="col">
+            <div *ngFor="let car of carsSlice | filter: filterText " class="col">
               <div class="card">
                 <img
                   routerLink="/cars/car/{{ car.carId }}"
@@ -100,7 +100,7 @@
           </div>
         
           <mat-paginator
-            [length]="length"
+            [length]="paginatorLength()"
             [pageSize]="12"
             aria-label="Select page"
             (page)="OnPageChange($event)"
