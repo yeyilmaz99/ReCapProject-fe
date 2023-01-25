@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
@@ -18,10 +18,10 @@ import { ColorService } from 'src/app/services/colorService/color.service';
   styleUrls: ['./cars.component.css']
 })
 export class CarsComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   filterText: string = '';
   cars: Car[] = [];
   length: number = this.cars.length;
-  carsSlice: Car[];
   pageSize = 10;
   brands: Brand[];
   colors: Color[];
@@ -29,6 +29,7 @@ export class CarsComponent implements OnInit {
   dataLoaded: boolean = false;
   carFilterForm: FormGroup;
   brandId:number = 0;
+  carsSlice: Car[];
 
   constructor(
     private carService: CarService,
@@ -57,6 +58,7 @@ export class CarsComponent implements OnInit {
   getCars() {
     this.carService.getCars().subscribe((response) => {
       this.cars = response.data;
+      this.carsSlice = this.cars.slice(0,12);
       this.dataLoaded = true;
     });
   }
@@ -118,14 +120,23 @@ export class CarsComponent implements OnInit {
     } else {
     }
   }
+  paginatorLength(){
+    return this.cars.length
+  }
 
   sortAll(){
     this.cars = this.orderByPipe.transform(this.cars, 'carId', 'asc')
+    this.carsSlice = this.cars.slice(0,12)
+    this.paginator.firstPage();
   }
   sortLow(){
     this.cars = this.orderByPipe.transform(this.cars, 'dailyPrice', 'asc')
+    this.carsSlice = this.cars.slice(0,12)
+    this.paginator.firstPage();
   }
   sortHigh(){
     this.cars = this.orderByPipe.transform(this.cars, 'dailyPrice', 'desc')
+    this.carsSlice = this.cars.slice(0,12)
+    this.paginator.firstPage();
   }
 }
